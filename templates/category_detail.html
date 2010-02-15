@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Category{% endblock %}
+
+{% block content %}
+
+<div id="blog" class="is_readable">
+
+<h2>All entries in the <em>{{ category_title }}</em> category</h2>
+
+<ul class="entries_list">
+	<li class="blog_wrapper">
+	{% for entry in entry_list %}
+		<h3 class="entry_title"><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h3>
+			<div class="blog_body">
+			{{ entry.body|safe }}
+			</div>
+			
+			<p class="inline_categories"><em>Categories: {% for category in entry.categories.all %}<a href="/category/{{ category.title }}">{{ category.title }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</em>	</p>
+			
+			{% if not forloop.last %}
+			<hr />
+			{% endif %}
+		</li>
+	{% endfor %}
+</ul>
+
+</div>
+
+
+{% endblock %}

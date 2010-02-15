@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" href="/static/css/reset.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/static/css/site.css" type="text/css" media="screen" />
+	<title>mrben - {% block title %}{% endblock %}</title>
+</head>
+<body>
+	<div class="container">
+		<div id="header" class="is_readable">
+			<div id="logo"><a href="/"><h1>mrben<small>.co.uk</small></h1></a></div>
+			<ul>
+				<li class="first"><a href="/about/">About</a></li>
+				<li><a href="/projects/">Projects</a></li>
+				<li><a href="/portfolio/">Portfolio</a></li>
+				<li><a href="/categories/">Categories</a></li>
+
+			</ul>
+		</div>
+		
+		<div id="content">
+			{% block content %}{% endblock %}
+		</div> <!-- /content -->
+		&nbsp;
+		<div id="footer" class="is_readable">
+			Made by Ben Tappin.
+		</div>
+	</div> <!-- /container -->
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Portfolio{% endblock %}
+
+{% block content %}
+
+<div id="blog" class="is_readable">
+	<h2>Portfolio</h2>
+	<p>Here are some work related things that I've done.</p>
+
+	{% for portfolio_item in portfolio_list %}
+		<h3>{{ portfolio_item.title }}</h3>
+		{{ portfolio_item.body|safe }}
+
+		{% if not forloop.last %}
+		<hr/>
+		{% endif %}
+
+	{% endfor %}
+</div>
+
+{% if tracks %}
+<div class="feature is_readable">
+	<h2>Something I heard</h2>
+	<p>&hellip; according to <a href="http://last.fm/">last.fm</a>.</p>
+		<ul>
+        {% for t in tracks %}
+			<li>{{ t.track }}</li>
+		{% endfor %}
+		</ul>
+</div>
+{% endif %}
+
+{% endblock %}
+

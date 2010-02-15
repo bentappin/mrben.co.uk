@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Categories{% endblock %}
+
+{% block content %}
+
+<div id="blog" class="is_readable">
+
+<h2>List of categories</h2>
+
+<p>Click one to see things filed under it...</p>
+
+{% if category_list %}
+	<ul>
+	{% for category in category_list %}
+		<li><a href="{{ category.get_absolute_url }}">{{ category }}</a></li>
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>No categories to display</p>
+{% endif %}
+
+</div>
+
+{% endblock %}

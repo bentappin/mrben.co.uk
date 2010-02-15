@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load comments humanize %}
+
+{% block title %}web developer and tinkerer{% endblock %}
+
+{% block content %}
+
+<div id="blog" class="is_readable">
+	<h2>Some of my news</h2>
+	<ul class="entries_list">
+		<li class="blog_wrapper">
+		{% for entry in entry_list %}
+			<h3 class="entry_title"><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h3>
+			
+				<div class="blog_body">
+				<p class="blog_date">{{ entry.publish|naturalday|capfirst }}</p>
+				{{ entry.body|safe }}
+				</div>
+				
+				<p class="inline_categories"><em>Categories: {% for category in entry.categories.all %}<a href="category/{{ category.title }}">{{ category.title }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</em>	</p>
+				
+				<p><em>We have <a href="{{ entry.get_absolute_url }}#comments">{% get_comment_count for entry as comment_count %} {{ comment_count }} comment{{ comment_count|pluralize }}</a>.</em></p>
+				
+				{% if not forloop.last %}
+				<hr />
+				{% endif %}
+			</li>
+		{% endfor %}
+	</ul>
+</div>
+
+<div class="feature is_readable">
+	<h2>Something I did</h2>
+	<h3>{{ project.title }}</h3>
+	{{ project.teaser|safe }}
+	
+	<a class="more_link" href="{{ project.get_absolute_url }}">More...</a>
+</div>
+
+<div class="feature is_readable">
+	<h2>Some links ordered alphabetically</h2>
+	{% include 'links.html' %}
+</div>
+
+{% if picture %}
+<div class="feature is_readable">
+
+	<h2>Something I saw</h2>
+	<p>&hellip; and put on <a href="http://flickr.com/">flickr</a>.</p>
+	
+	<a href="{{ picture.href }}" title="A picture form flickr"><img src="{{ picture.src }}" style="width: 100%;" /></a>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Projects{% endblock %}
+
+{% block content %}
+
+<div id="inner_content" class="is_readable">
+	<h2>Projects</h2>
+	<p>Here are some projects/things I've worked on in my free time.</p>
+
+	{% for project in project_list %}
+		<h3>{{ project.title }}</h3>
+		{{ project.body|safe }}
+
+		{% if not forloop.last %}
+		<hr/>
+		{% endif %}
+
+	{% endfor %}
+</div>
+
+{% if tweets %}
+<div class="feature is_readable">
+	<h2>Something I said</h2>
+	<p>&hellip; on <a href="http://twitter.com/">Twitter</a>.</p>
+		<ul>
+        {% for t in tweets %}
+			<li>{{ t.text }}</li>
+		{% endfor %}
+		</ul>
+    
+</div>
+{% endif %}
+
+{% endblock %}
