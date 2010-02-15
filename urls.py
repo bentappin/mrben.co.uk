@@ -59,7 +59,7 @@ category_info = {
 
 # URL patterns
 urlpatterns = patterns('',
-	(r'^admin/', include(admin.site.root)),
+	(r'^admin/', include(admin.site.urls)),
 
 	# Front page
 	(r'^$', list_detail.object_list, home_page_info),
