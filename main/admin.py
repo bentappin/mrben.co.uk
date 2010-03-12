@@ -1,6 +1,8 @@
-from django.contrib import admin
 from django import forms
+from django.contrib import admin
+
 from mrben.main.models import Entry, Category, Link
+
 
 class EntryAdminForm(forms.ModelForm):
 	def __init__(self, *args, **kwargs):
@@ -15,7 +17,8 @@ class EntryAdminForm(forms.ModelForm):
 		
 	class Meta:
 		model = Entry
-		
+
+
 class EntryAdmin(admin.ModelAdmin):
 	form = EntryAdminForm
 	

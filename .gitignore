@@ -16,6 +16,4 @@ logs/
 .svn/
 *.pyc
 *.swp
-settings_local.py
-settings_remote.py
-settings.py
+settings_*.py

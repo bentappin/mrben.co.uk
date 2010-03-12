@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 from mrben.main.managers import PublicManager
 
+
 class Category(models.Model):
 	"""Category model."""
 	title = models.CharField(max_length=40)
@@ -23,9 +24,9 @@ class Entry(models.Model):
 	LIVE_STATUS = 1
 	DRAFT_STATUS = 2
 	HIDDEN_STATUS = 3
-	STATUS_CHOICES = ((LIVE_STATUS, 'Live'),
-										(DRAFT_STATUS, 'Draft'),
-										(HIDDEN_STATUS, 'Hidden'),
+	STATUS_CHOICES = (	(LIVE_STATUS, 'Live'),
+						(DRAFT_STATUS, 'Draft'),
+						(HIDDEN_STATUS, 'Hidden'),
 	)
 	
 	title = models.CharField(max_length=40)
