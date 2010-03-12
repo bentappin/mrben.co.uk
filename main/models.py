@@ -30,7 +30,7 @@ class Entry(models.Model):
 	)
 	
 	title = models.CharField(max_length=40)
-	slug = models.SlugField(blank=False, null=False)
+	slug = models.SlugField(blank=False, null=False, unique=True)
 	author = models.ForeignKey(User, blank=True, null=True)
 	body = models.TextField()
 	teaser = models.TextField()
