@@ -7,15 +7,4 @@ Consequently there are plenty of things I would do differently!
 
 I'm going to try and do that over the coming months.
 
-You will need to define the following values in your settings file:
-TWITTER_USER = ''
-TWITTER_TIMEOUT = 3600
-LASTFM_KEY = ''
-LASTFM_SECRET = ''
-LASTFM_USER = ''
-LASTFM_PWDHASH = ''
-LASTFM_TIMEOUT = 3600
-FLICKR_KEY = ''
-FLICKR_SECRET = ''
-FLICKR_ID = ''
-FLICKR_TIMEOUT = 3600
+You will need to define your settings in settings.py or settings_local.py.
