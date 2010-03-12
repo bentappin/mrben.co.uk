@@ -30,7 +30,7 @@ class Entry(models.Model):
 	)
 	
 	title = models.CharField(max_length=40)
-	slug = models.SlugField(blank=True)
+	slug = models.SlugField(blank=False, null=False)
 	author = models.ForeignKey(User, blank=True, null=True)
 	body = models.TextField()
 	teaser = models.TextField()
@@ -46,7 +46,7 @@ class Entry(models.Model):
 		return u'%s' % self.title
 		
 	def get_absolute_url(self):
-		return "/entry/%i/" % self.id
+		return "/entry/%s/" % self.slug
 		
 	class Admin:
 		list_display = ('title', 'publish', 'status')

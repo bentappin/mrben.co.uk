@@ -2,11 +2,12 @@ from django.conf.urls.defaults import *
 from django.conf import settings
 from django.views.generic.simple import direct_to_template
 from django.views.generic import list_detail
+from django.contrib import admin
+
 from mrben.main.models import *
 from mrben.main.views import *
 
-# Uncomment the next two lines to enable the admin:
-from django.contrib import admin
+
 admin.autodiscover()
 
 # Setup variables for generic views
@@ -22,6 +23,7 @@ entry_info = {
 	'queryset': Entry.objects.published(),
 	'template_name': 'entry_detail.html',
 	'template_object_name': 'entry',
+	'slug_field': 'slug',
 }
 
 home_page_info = {
@@ -65,7 +67,6 @@ urlpatterns = patterns('',
 	(r'^$', list_detail.object_list, home_page_info),
 
 	# Pages
-	#(r'^about/$',direct_to_template, {'template': 'about.html'}),
 	(r'^projects/$', list_detail.object_list, projects_info),
 	(r'^portfolio/$', list_detail.object_list, portfolio_info),
 	(r'^categories/$', list_detail.object_list, categories_info),
@@ -73,6 +74,7 @@ urlpatterns = patterns('',
 	
 	# "Blog" pages
 	(r'^(entry|project|portfolio)/(?P<object_id>\d+)/$', list_detail.object_detail, entry_info),
+	(r'^(entry|project|portfolio)/(?P<slug>[-\w]+)/$', list_detail.object_detail, entry_info),
 	
 	(r'^comments/', include('django.contrib.comments.urls')),
 )
