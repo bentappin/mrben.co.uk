@@ -92,9 +92,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 	'django.core.context_processors.media', 
 	'django.core.context_processors.request',
 
-	'mrben.context_processors.latest_tweet',
 	'mrben.context_processors.latest_tweets',
-	'mrben.context_processors.latest_lastfm_track',
 	'mrben.context_processors.latest_lastfm_tracks',
 	'mrben.context_processors.random_flickr_picture',
 )

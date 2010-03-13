@@ -6,21 +6,6 @@ from django.core.cache import cache
 import twitter, pylast, flickrapi, random
 
 
-def latest_tweet(request):
-	tweet = cache.get('tweet')
-	
-	if tweet:
-		return {'tweet': tweet}
-	
-	try:	
-		tweet = twitter.Api().GetUserTimeline(settings.TWITTER_USER, )[0]
-		tweet.date= datetime.strptime( tweet.created_at, "%a %b %d %H:%M:%S +0000 %Y" )
-		cache.set( 'tweet', tweet, settings.TWITTER_TIMEOUT )
-	except:
-		return {"tweet": None }
-	
-	return {"tweet": tweet}
-
 def latest_tweets(request):
 	tweets = cache.get('tweets')
 	
@@ -37,25 +22,6 @@ def latest_tweets(request):
 	cache.set( 'tweets', tweets, settings.TWITTER_TIMEOUT )
 	
 	return {"tweets": tweets}
-
-def latest_lastfm_track(request):
-	track = cache.get('track')
-	
-	if track:
-		return {'track': track}
-	
-	try:
-		network = (pylast.get_lastfm_network(api_key = settings.LASTFM_KEY,
-					api_secret = settings.LASTFM_SECRET, username = settings.LASTFM_USER,
-					password_hash = settings.LASTFM_PWDHASH))
-		user = pylast.User(settings.LASTFM_USER, network)
-		track = user.get_recent_tracks()[0]
-	except:
-		return {"track": None }
-	
-	cache.set( 'track', track, settings.LASTFM_TIMEOUT )
-	
-	return { 'track': track}
 
 def latest_lastfm_tracks(request):
 	tracks = cache.get('tracks')
