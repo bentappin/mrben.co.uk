@@ -3,6 +3,7 @@ from django.conf import settings
 from django.views.generic.simple import direct_to_template
 from django.views.generic import list_detail
 from django.contrib import admin
+from django.http import HttpResponseRedirect
 
 from mrben.main.models import *
 from mrben.main.views import *
@@ -77,6 +78,8 @@ urlpatterns = patterns('',
 	(r'^(entry|project|portfolio)/(?P<slug>[-\w]+)/$', list_detail.object_detail, entry_info),
 	
 	(r'^comments/', include('django.contrib.comments.urls')),
+	
+	(r'^favicon\.ico$', lambda r: HttpResponseRedirect('/static/images/favicon.ico')),
 )
 
 if settings.DEBUG == True:
