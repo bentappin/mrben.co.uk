@@ -1,0 +1,45 @@
+{% load comments humanize %}
+
+{% if entry %}
+		<h2 class="entry_title"><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
+		
+			<div class="blog_body">
+			<p class="blog_date">{{ entry.publish|naturalday|capfirst }}</p>
+			{{ entry.body|safe }}
+			</div>
+			
+			<p class="inline_categories"><em>Categories: {% for category in entry.categories.all %}<a href="/category/{{ category.title }}">{{ category.title }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</em></p>
+			
+			<a name="comments"><p><em>We have {% get_comment_count for entry as comment_count %} {{ comment_count }} comment{{ comment_count|pluralize }}.</em></p></a>
+			
+			{% if show_comments %}
+			
+				<div id="comments_section">
+				{% get_comment_list for entry as comment_list %}
+				{% if comment_list %}
+					<ul>
+					{% for comment in comment_list %}
+					<li class="blog_comment">
+						<p>{{ comment.user_name }} ({{ comment.submit_date|naturalday|capfirst }})</p>
+						<p>{{ comment.comment }}</p>
+					</li>
+					{% endfor %}
+					</ul>
+				{% endif %}
+				</div>
+	
+				<br />
+				{% get_comment_form for entry as form %}
+				<br /><br />
+				<h4>Make a comment...</h4> <br />
+				<form action="{% comment_form_target %}" method="POST">
+					{{ form.as_ul }}
+					<input type="hidden" name="next" value="{{ entry.get_absolute_url }}" />
+					<input class="form_button" type="submit" name="submit" value="Finished" />
+				</form>
+			
+			{% endif %}
+			
+{% else %}
+<p>Error finding entry.</p>
+{% endif %}

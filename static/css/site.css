@@ -249,9 +249,9 @@ body {
 }
 
 .entries_list hr {
-	border: 0;
 	width: 80%;
-	color: #333;
+	margin-bottom: 20px;
+	border: 0;	
 	background-color: #333;
 }
 
