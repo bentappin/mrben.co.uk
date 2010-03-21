@@ -277,6 +277,10 @@ body {
 	background:url(http://www.google.com/s2/favicons?domain=www.last.fm) 0 50% no-repeat;
 }
 
+.site-gh {
+	background:url(http://www.google.com/s2/favicons?domain=www.github.com) 0 50% no-repeat;
+}
+
 .important:hover{
 	background: #c09;
 }
