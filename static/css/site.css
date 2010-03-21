@@ -11,26 +11,27 @@ html {
 
 /******** Typography ********/
 body {
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
 	color: #ccc;
 	line-height: 1.5em;
-	font-size: 0.9em;
+	font-size: 0.8em;
 }
 
 h1,h2,h3,h4,h5,h6 {
-	font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;
+	font-family: "Trebuchet MS", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
 }
 
 h2 {
 	font-weight: normal;
-	font-size: 1.5em;
+	font-size: 1.7em;
+	line-height: 1.1em;
 	color: #0c6;
 	padding-bottom: 0.6em;
 }
 
 h3 {
 	font-weight: normal;
-	font-size: 1em;
+	font-size: 1.5em;
 	color: #c09;
 	padding-bottom: 0.6em;
 	padding-top: 0.3em;
@@ -38,14 +39,10 @@ h3 {
 
 h4 {
 	font-weight: bold;
-	font-size: 1.2em;
+	font-size: 1em;
 	color: #c09;
 	padding-bottom: 0.4em;
 	padding-top: 0.6em;
-}
-
-#header {
-	font-family: "Trebuchet MS", helvetica, verdana, arial, sans-serif;
 }
 
 #logo a {
@@ -56,11 +53,11 @@ h4 {
 	font-size: 3em;
 	font-weight: normal;
 	color: #c09;
-	line-height: 1em;
+	line-height: 1.1em;
 }
 
 #logo a h1 small {
-	font-size: 0.75em;
+	font-size: 0.7em;
 	font-weight: normal;
 	color: #0c6;
 }
@@ -100,7 +97,7 @@ li {
 }
 
 #header ul li {
-	font-size: 1em;
+	font-size: 1.1em;
 }
 
 #header ul li a {
