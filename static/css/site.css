@@ -11,25 +11,26 @@ html {
 
 /******** Typography ********/
 body {
-	font-family: "Lucida Sans Unicode",Arial, Helvetica, sans-serif;
+	font-family: Helvetica, Arial, sans-serif;
 	color: #ccc;
-	font-size: 0.8em;
+	line-height: 1.5em;
+	font-size: 0.9em;
 }
 
 h1,h2,h3,h4,h5,h6 {
-	font-family: "Trebuchet MS", Helvetica, verdana, arial, sans-serif;
+	font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;
 }
 
 h2 {
 	font-weight: normal;
-	font-size: 2em;
+	font-size: 1.5em;
 	color: #0c6;
 	padding-bottom: 0.6em;
 }
 
 h3 {
 	font-weight: normal;
-	font-size: 1.5em;
+	font-size: 1em;
 	color: #c09;
 	padding-bottom: 0.6em;
 	padding-top: 0.3em;
@@ -45,7 +46,6 @@ h4 {
 
 #header {
 	font-family: "Trebuchet MS", helvetica, verdana, arial, sans-serif;
-	font-size: 0.9em;
 }
 
 #logo a {
@@ -53,9 +53,10 @@ h4 {
 }
 
 #logo a h1 {
-	font-size: 3.5em;
+	font-size: 3em;
 	font-weight: normal;
 	color: #c09;
+	line-height: 1em;
 }
 
 #logo a h1 small {
@@ -69,8 +70,7 @@ h4 {
 }
 
 p {
-	padding-bottom: 0.8em;
-	line-height: 1.2em;
+	padding-bottom: 1em;
 }
 
 p a {
@@ -84,8 +84,7 @@ p a:hover {
 }
 
 li {
-	padding-bottom: 0.8em;
-	line-height: 0.66em;
+	padding-bottom: 1em;
 	list-style: square;
 	margin-left: 15px;
 }
@@ -101,7 +100,7 @@ li {
 }
 
 #header ul li {
-	font-size: 1.25em;
+	font-size: 1em;
 }
 
 #header ul li a {
@@ -153,7 +152,7 @@ body {
 }
 
 .container {
-	width: 830px;
+	width: 940px;
 	margin: 40px auto;
 	padding-top: 15px;
 	padding-bottom: 15px;
@@ -204,7 +203,7 @@ body {
 	float: left;
 	padding: 15px 15px;
 	margin: 15px 15px;
-	width: 530px;
+	width: 640px;
 }
 
 .entry_title {
@@ -234,8 +233,7 @@ body {
 	margin-top: 0px;
 	margin-bottom: 0px;
 	margin-left: 2em;
-	list-style: square ;
-	line-height: 0em;
+	list-style: square;
 }
 
 .entries_list ul li a {
@@ -253,10 +251,6 @@ body {
 	margin-bottom: 20px;
 	border: 0;	
 	background-color: #333;
-}
-
-.feature ul li {
-	line-height: 1em;
 }
 
 .sites {
