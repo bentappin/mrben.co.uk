@@ -23,18 +23,9 @@
 	</ul>
 </div>
 
-<div class="feature is_readable">
-	<h2>Something I did</h2>
-	<h3>{{ project.title }}</h3>
-	{{ project.teaser|safe }}
-	
-	<a class="more_link" href="{{ project.get_absolute_url }}">More...</a>
-</div>
+{% include 'includes/project_feature.html' %}
 
-<div class="feature is_readable">
-	<h2>Some links ordered alphabetically</h2>
-	{% include 'includes/links.html' %}
-</div>
+{% include 'includes/links.html %}
 
 {% include 'includes/photo.html' %}
 
