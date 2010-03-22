@@ -5,20 +5,16 @@
  * Green:		#0c6
  */
 
-html {
-	height: 100.2%;	/* Scroll bar hack. */
-}
-
 /******** Typography ********/
 body {
-	font-family: "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
 	color: #ccc;
 	line-height: 1.5em;
 	font-size: 0.8em;
 }
 
 h1,h2,h3,h4,h5,h6 {
-	font-family: "Trebuchet MS", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+	font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
 }
 
 h2 {
@@ -67,7 +63,7 @@ h4 {
 }
 
 p {
-	padding-bottom: 1em;
+	padding: 0.5em 0em;
 }
 
 p a {
@@ -81,9 +77,12 @@ p a:hover {
 }
 
 li {
-	padding-bottom: 1em;
 	list-style: square;
 	margin-left: 15px;
+}
+
+.feature li {
+	padding-bottom: 1em;
 }
 
 .feature li a {
@@ -145,24 +144,25 @@ li {
 /******** Layout and Styling ********/
 body {
 	background-color: #000;
-	background-image: url('../images/body_repeat2.png');
+	background-image: url('/static/images/body_repeat2.png');
 }
 
 .container {
 	width: 940px;
 	margin: 40px auto;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	background: #333 url('../images/spirals.png') right top;
+	padding: 15px 0px;
+	background: #333 url('/static/images/spirals.png') right top;
+}
+
+.is_readable {
+	background-image: url('/static/images/75_opacity.png');
 }
 
 /* HEADER */
 
 #header {
 	height: 35px;
-	padding-left: 15px;
-	padding-bottom: 15px;
-	padding-top: 10px;
+	padding: 15px;
 }
 
 #header #logo {
@@ -176,9 +176,7 @@ body {
 #header li {
 	margin-top: 0.735em;
 	margin-bottom: 0;
-	padding-left: 1em;
-	padding-bottom: 0;
-	padding-top: 0;
+	padding: 0 0 0 1em;
 	float: left;
 	border-left: 1px solid;
 	list-style-type: none;
@@ -192,21 +190,17 @@ body {
 /* CONTENT */
 
 #content {
-	margin-top: 15px;
-	margin-bottom: 15px;
+	margin: 15px 0;
 }
 
 #blog, #inner_content {
 	float: left;
 	padding: 15px 15px;
-	margin: 15px 15px;
+	margin: 0 15px;
+	margin-bottom: 15px;
 	width: 640px;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
-}
-
-.entry_title {
-	float: left;
 }
 
 .blog_body {
@@ -215,8 +209,7 @@ body {
 
 .feature {
 	padding: 15px 15px;
-	margin-right: 15px;
-	margin-top: 15px;
+	margin: 0 15px 15px 0;
 	float: right;
 	width: 195px;
 	-webkit-border-radius: 10px;
@@ -227,7 +220,6 @@ body {
 	list-style: none;
 	margin-left: 0px;
 	padding-top: 0px;
-	padding-bottom: 15px;
 }
 
 .entries_list ul li {
@@ -247,12 +239,15 @@ body {
 	color: #ccc;
 }
 
-.entries_list hr {
+hr {
 	width: 80%;
+	margin-top: 20px;
 	margin-bottom: 20px;
 	border: 0;	
 	background-color: #333;
 }
+
+/* Sites include */
 
 .sites {
 	margin:0; padding-left:0;
@@ -284,6 +279,8 @@ body {
 .site-gh {
 	background:url(http://www.google.com/s2/favicons?domain=www.github.com) 0 50% no-repeat;
 }
+
+/* end: sites include */
 
 .important:hover{
 	background: #c09;
@@ -334,13 +331,7 @@ body {
 
 /* FOOTER */
 #footer {
-	margin-top: 15px;
 	padding: 15px;
-	padding-bottom: 15px;
 	clear: both;
 	text-align: right;
-}
-
-.is_readable {
-	background-image: url('../images/75_opacity.png');
 }
