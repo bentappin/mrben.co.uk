@@ -195,6 +195,7 @@ body {
 
 #blog, #inner_content {
 	float: left;
+	display: inline;
 	padding: 15px 15px;
 	margin: 0 15px;
 	margin-bottom: 15px;
@@ -211,6 +212,7 @@ body {
 	padding: 15px 15px;
 	margin: 0 15px 15px 0;
 	float: right;
+	display: inline;
 	width: 195px;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
