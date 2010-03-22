@@ -201,6 +201,8 @@ body {
 	padding: 15px 15px;
 	margin: 15px 15px;
 	width: 640px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
 }
 
 .entry_title {
@@ -217,6 +219,8 @@ body {
 	margin-top: 15px;
 	float: right;
 	width: 195px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
 }
 
 .entries_list li {
