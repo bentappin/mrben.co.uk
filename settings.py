@@ -78,11 +78,11 @@ INSTALLED_APPS = (
 	'django.contrib.contenttypes',
 	'django.contrib.sessions',
 	'django.contrib.sites',
-	'django.contrib.comments',
 	'django.contrib.flatpages',
 	'django.contrib.humanize',
 	'django.contrib.admin',
 	'mrben.main',
+    'disqus',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -108,6 +108,8 @@ FLICKR_KEY = ''
 FLICKR_SECRET = ''
 FLICKR_ID = ''
 FLICKR_TIMEOUT = 3600 / 2
+DISQUS_API_KEY = ''
+DISQUS_WEBSITE_SHORTNAME = ''
 
 try:
 	from settings_local import *
