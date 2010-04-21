@@ -1,5 +1,5 @@
 from django.contrib.syndication.views import Feed
-from main.models import Entry
+from mrben.main.models import Entry
 
 
 class EntriesFeed(Feed):
