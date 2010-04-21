@@ -3,9 +3,9 @@ from mrben.main.models import Entry
 
 
 class EntriesFeed(Feed):
-    title = "mrben.co.uk"
+    title = "mrben.co.uk | web developer and tinkerer"
     link = '/'
-    description = "mrben | web developer and tinkerer"
+    description = "The personal blog of Ben Tappin - web developer and tinkerer."
 
     def items(self):
         return Entry.objects.published().exclude(categories__title='Projects').exclude(categories__title='Portfolio')
