@@ -339,7 +339,6 @@ hr {
 
 .feed {
     height: 12px;
-    margin-left: 3px;
-    padding: 0 0 0 19px;
+    padding: 0 0 0 12px;
     background: url("/static/images/feed_43.png") no-repeat 0 50%;
 }
