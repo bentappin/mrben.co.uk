@@ -14,9 +14,7 @@
 			
 			{% if show_comments %}
 				{% if is_home %}
-					{% comment %} Don't show comments on home page.
-								  Give link to detail page. {% endcomment %}
-			        <a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a>
+			        <p class="comment_count"><a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a></p>
 					{% disqus_num_replies %}
 				{% else %}
 					{% disqus_show_comments %}
