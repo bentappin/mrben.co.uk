@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect
 
 from mrben.main.models import *
 from mrben.main.views import *
+from mrben.main.feeds import EntriesFeed
 
 
 admin.autodiscover()
@@ -79,6 +80,9 @@ urlpatterns = patterns('',
 	# "Blog" pages
 	(r'^(entry|project|portfolio)/(?P<object_id>\d+)/$', list_detail.object_detail, entry_info),
 	(r'^(entry|project|portfolio)/(?P<slug>[-\w]+)/$', list_detail.object_detail, entry_info),
+	
+	# Syndication feeds
+	(r'^feed/$', EntriesFeed()),
 	
 	(r'^favicon\.ico$', lambda r: HttpResponseRedirect('/static/images/favicon.ico')),
 )
