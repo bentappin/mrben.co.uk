@@ -336,3 +336,10 @@ hr {
 	clear: both;
 	text-align: right;
 }
+
+.feed {
+    height: 12px;
+    margin-left: 3px;
+    padding: 0 0 0 19px;
+    background: url("/static/images/feed_43.png") no-repeat 0 50%;
+}
