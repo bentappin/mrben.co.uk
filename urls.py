@@ -25,6 +25,7 @@ entry_info = {
 	'template_name': 'entry_detail.html',
 	'template_object_name': 'entry',
 	'slug_field': 'slug',
+    'extra_context': {'show_comments': True,},
 }
 
 home_page_info = {
@@ -32,7 +33,9 @@ home_page_info = {
 	'template_name': 'home.html',
 	'template_object_name': 'entry',
 	'extra_context': { 	'project': get_featured_project,
-	 					'link_list': get_links }
+	 					'link_list': get_links,
+                         'show_comments': True,
+                         'is_home': True,}
 }
 
 projects_info = {
@@ -76,8 +79,6 @@ urlpatterns = patterns('',
 	# "Blog" pages
 	(r'^(entry|project|portfolio)/(?P<object_id>\d+)/$', list_detail.object_detail, entry_info),
 	(r'^(entry|project|portfolio)/(?P<slug>[-\w]+)/$', list_detail.object_detail, entry_info),
-	
-	(r'^comments/', include('django.contrib.comments.urls')),
 	
 	(r'^favicon\.ico$', lambda r: HttpResponseRedirect('/static/images/favicon.ico')),
 )

@@ -1,4 +1,6 @@
 {% load humanize %}
+{% load disqus_tags %}
+{% disqus_dev %}
 
 {% if entry %}
 		<h3 class="entry_title"><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h3>
@@ -9,6 +11,17 @@
 			</div>
 			
 			<p class="inline_categories"><em>Categories: {% for category in entry.categories.all %}<a href="/category/{{ category.title }}">{{ category.title }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</em></p>
+			
+			{% if show_comments %}
+				{% if is_home %}
+					{% comment %} Don't show comments on home page.
+								  Give link to detail page. {% endcomment %}
+			        <a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a>
+					{% disqus_num_replies %}
+				{% else %}
+					{% disqus_show_comments %}
+				{% endif %}
+			{% endif %}
 			
 {% else %}
 <p>Error finding entry.</p>
