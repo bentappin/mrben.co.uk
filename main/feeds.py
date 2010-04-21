@@ -14,8 +14,20 @@ class EntriesFeed(Feed):
         return item.title
 
     def item_description(self, item):
-        return item.teaser
+        return item.body
         
     def item_link(self, item):
         return item.get_absolute_url()
+        
+    def item_author_name(self, item):
+        return item.author.get_full_name() or item.author.username
+        
+    def item_pubdate(self, item):
+        return item.publish
+        
+    def item_author_email(self, item):
+        return item.author.email
     
+    def item_guid(self, item):
+        return u'%s' % item.pk
+        
