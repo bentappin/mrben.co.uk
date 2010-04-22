@@ -1,0 +1,27 @@
+<div class="pagination">
+	<ul class="pagination-controls">
+		<li class="previous">
+			{% if paginator.has_previous %}
+				<a href="?page={{ paginator.previous_page_number }}">
+			{% endif %}
+			&laquo;&nbsp;newer
+			{% if paginator.has_previous %}
+				</a>
+			{% endif %}
+		</li>
+		
+		<li class="current">
+			page {{ paginator.number }} of {{ paginator.paginator.num_pages }}
+		</li>
+	
+		<li class="next">
+			{% if paginator.has_next %}
+				<a href="?page={{ entries.next_page_number }}">
+			{% endif %}
+			older&nbsp;&raquo;
+			{% if paginator.has_next %}
+				</a>
+			{% endif %}
+		</li>
+	</ul>
+</div>

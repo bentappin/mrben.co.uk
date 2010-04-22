@@ -242,7 +242,8 @@ body {
 }
 
 hr {
-	width: 80%;
+	width: 90%;
+	height: 1px;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	border: 0;	
@@ -329,6 +330,29 @@ hr {
 }
 
 /* end: Disqus comments */
+
+/* Pagination */
+.pagination-controls {
+	width: 100%;
+}
+
+.pagination-controls li {
+	float: left;
+	width: 33.33%;
+	margin-left: 0px;
+	list-style: none;
+}
+
+.pagination-controls .current {
+	text-align: center;
+}
+
+.pagination-controls .next {
+	text-align: right;
+}
+
+
+/* end: Pagination */
 
 /* FOOTER */
 #footer {

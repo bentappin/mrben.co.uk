@@ -6,11 +6,11 @@
 
 {% block content %}
 
-<div id="blog" class="is_readable steve">
-	<h2>Some of my news</h2>
+<div id="blog" class="is_readable">
+	<h2>{{ title }}</h2>
 	<ul class="entries_list">
 		<li class="blog_wrapper">
-		{% for entry in entry_list %}
+		{% for entry in entries.object_list %}
 		
 			{% include 'includes/entry.html' %}
 			
@@ -21,6 +21,10 @@
 		{% endfor %}
 		</li>
 	</ul>
+	<hr />
+	{% with entries as paginator %}
+		{% include 'includes/pagination.html' %}
+	{% endwith %}
 </div>
 
 {% include 'includes/project_feature.html' %}
