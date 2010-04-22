@@ -12,15 +12,12 @@
 			
 			<p class="inline_categories"><em>Categories: {% for category in entry.categories.all %}<a href="/category/{{ category.title }}">{{ category.title }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</em></p>
 			
-			{% if show_comments %}
-				{% if is_home %}
-			        <p class="comment_count"><a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a></p>
-					{% disqus_num_replies %}
-				{% else %}
-					{% disqus_show_comments %}
-				{% endif %}
-			{% endif %}
+			<p class="comment_count"><a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a></p>
+			{% disqus_num_replies %}
 			
+			{% if show_comments %}
+				{% disqus_show_comments %}
+			{% endif %}
 {% else %}
 <p>Error finding entry.</p>
 {% endif %}

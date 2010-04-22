@@ -10,19 +10,16 @@
 
 <ul class="entries_list">
 	<li class="blog_wrapper">
-	{% for entry in entry_list %}
-		<h3 class="entry_title"><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h3>
-			<div class="blog_body">
-			{{ entry.body|safe }}
-			</div>
-			
-			<p class="inline_categories"><em>Categories: {% for category in entry.categories.all %}<a href="/category/{{ category.title }}">{{ category.title }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</em>	</p>
+		{% for entry in entry_list %}
+		
+			{% include 'includes/entry.html' %}
 			
 			{% if not forloop.last %}
 			<hr />
 			{% endif %}
-		</li>
-	{% endfor %}
+			
+		{% endfor %}
+	</li>
 </ul>
 
 </div>
