@@ -29,5 +29,5 @@ class EntriesFeed(Feed):
         return item.author.email
     
     def item_guid(self, item):
-        return u'%s' % item.pk
+        return item.guid
         

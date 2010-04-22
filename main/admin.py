@@ -9,11 +9,11 @@ class EntryAdminForm(forms.ModelForm):
 		super(EntryAdminForm, self).__init__(*args, **kwargs)
 	
 	body = forms.CharField(required=False,
-												widget=forms.Textarea(attrs={
-																'class': 'tinymce vLargeTextField'}))
-	teaser = forms.CharField(	required=False,
-														widget=forms.Textarea(attrs={
-																		'class': 'tinymce vLargeTextField'}))
+	                       widget=forms.Textarea(attrs={
+	                           'class': 'tinymce vLargeTextField'}))
+	teaser = forms.CharField(required=False,
+	                         widget=forms.Textarea(attrs={
+	                             'class': 'tinymce vLargeTextField'}))
 		
 	class Meta:
 		model = Entry
@@ -21,6 +21,7 @@ class EntryAdminForm(forms.ModelForm):
 
 class EntryAdmin(admin.ModelAdmin):
 	form = EntryAdminForm
+	fields = ('title', 'slug', 'author', 'body', 'teaser', 'publish', 'status', 'categories',)
 	
 	class Media:
 		js = ('js/jquery/jquery-1.4.1.min.js',

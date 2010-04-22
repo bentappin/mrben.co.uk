@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -40,6 +42,7 @@ class Entry(models.Model):
 	modified = models.DateTimeField(auto_now=True)
 	categories = models.ManyToManyField(Category, blank=True, null=True)
 	status = models.IntegerField(choices=STATUS_CHOICES, default=DRAFT_STATUS)
+	guid = models.CharField(max_length='36', blank=False, null=False)
 	objects = PublicManager()
 	
 	def __unicode__(self):
@@ -47,6 +50,11 @@ class Entry(models.Model):
 		
 	def get_absolute_url(self):
 		return "/entry/%s/" % self.slug
+	
+	def save(self, *args, **kwargs):
+		if not self.guid:
+			self.guid = str(uuid.uuid4())
+		super(Entry, self).save(*args, **kwargs)
 		
 	class Admin:
 		list_display = ('title', 'publish', 'status')
