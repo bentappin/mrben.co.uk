@@ -54,14 +54,14 @@ SECRET_KEY = ''
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.load_template_source',
     'django.template.loaders.app_directories.load_template_source',
-#     'django.template.loaders.eggs.load_template_source',
+    #'django.template.loaders.eggs.load_template_source',
 )
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-	'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
 ROOT_URLCONF = 'mrben.urls'
@@ -70,31 +70,32 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-	'/path/to/templates',
+    '/path/to/templates',
 )
 
 INSTALLED_APPS = (
-	'django.contrib.auth',
-	'django.contrib.contenttypes',
-	'django.contrib.sessions',
-	'django.contrib.sites',
-	'django.contrib.flatpages',
-	'django.contrib.humanize',
-	'django.contrib.admin',
-	'mrben.main',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
+    'django.contrib.humanize',
+    'django.contrib.admin',
+    'mrben.main',
     'disqus',
+    'south',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-	'django.core.context_processors.auth', 
-	'django.core.context_processors.debug', 
-	'django.core.context_processors.i18n', 
-	'django.core.context_processors.media', 
-	'django.core.context_processors.request',
+    'django.core.context_processors.auth', 
+    'django.core.context_processors.debug', 
+    'django.core.context_processors.i18n', 
+    'django.core.context_processors.media', 
+    'django.core.context_processors.request',
 
-	'mrben.context_processors.latest_tweets',
-	'mrben.context_processors.latest_lastfm_tracks',
-	'mrben.context_processors.random_flickr_picture',
+    'mrben.context_processors.latest_tweets',
+    'mrben.context_processors.latest_lastfm_tracks',
+    'mrben.context_processors.random_flickr_picture',
 )
 
 TWITTER_USER = ''
