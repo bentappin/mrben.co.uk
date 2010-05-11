@@ -6,6 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<link rel="stylesheet" href="/static/css/reset.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="/static/css/site.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/static/css/syntax_highlighting.css" type="text/css" media="screen" />
 	<!--[if IE 6]><link rel="stylesheet" href="/static/css/ie6.css" type="text/css" media="screen" /><![endif]-->
 	<title>mrben - {% block title %}{% endblock %}</title>
 </head>
@@ -15,16 +16,16 @@
 			<div id="logo"><a href="/"><h1>mrben<small>.co.uk</small></h1></a></div>
 			<ul>
 				<li class="first"><a href="/about/">About</a></li>
-				<!--><li><a href="/projects/">Projects</a></li>
-				<li><a href="/portfolio/">Portfolio</a></li>-->
 				<li><a href="/categories/">Categories</a></li>
-
 			</ul>
 		</div>
 		
 		<div id="content">
 			{% block content %}{% endblock %}
-		</div> <!-- /content -->
+			
+			{% include feature_1 %}
+			{% include feature_2 %}
+		</div><!-- /content -->
 		&nbsp;
 		<div id="footer" class="is_readable">
 			Made by Ben Tappin. <a href="http://mrben.co.uk/feed/" class="feed">&nbsp;</a>

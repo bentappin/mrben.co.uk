@@ -33,7 +33,7 @@ class Entry(models.Model):
                               (HIDDEN_STATUS, 'Hidden'),
                               )
 
-    title = models.CharField(max_length=40)
+    title = models.CharField(max_length=255)
     slug = models.SlugField(blank=False, null=False, unique=True)
     author = models.ForeignKey(User, blank=True, null=True)
     body = models.TextField()
@@ -68,7 +68,6 @@ class Entry(models.Model):
         from pygments import highlight
         from pygments.lexers import get_lexer_by_name
         from pygments.formatters import HtmlFormatter
-        from pygments.styles import get_style_by_name
 
         soup = BeautifulSoup(html)
         preblocks = soup.findAll('pre')
@@ -78,15 +77,9 @@ class Entry(models.Model):
                     code = ''.join([unicode(item) for item in pre.contents])
                     code = self.unescape_html(code)
                     lexer = get_lexer_by_name(pre['class'])
-                    formatter = HtmlFormatter(style='monokai')
+                    formatter = HtmlFormatter()
                     code_hl = highlight(code, lexer, formatter)
-                    code_with_css = '%s\n%s\n%s\n%s' % (
-                        '<style type="text/css">',
-                        formatter.get_style_defs(),
-                        '</style>',
-                        code_hl,)
-
-                    pre.replaceWith(BeautifulSoup(code_with_css))
+                    pre.replaceWith(BeautifulSoup(code_hl))
                 except:
                     pass
         return unicode(soup)
