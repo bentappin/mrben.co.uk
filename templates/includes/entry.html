@@ -7,7 +7,11 @@
 		
 			<div class="blog_body">
 			<p class="blog_date">{{ entry.publish|naturalday|capfirst }}</p>
-			{{ entry.body|safe }}
+			{% if entry.body_highlighted %}
+				{{ entry.body_highlighted|safe }}
+			{% else %}
+				{{ entry.body|safe }}
+			{% endif %}
 			</div>
 			
 			<p class="inline_categories"><em>Categories: {% for category in entry.categories.all %}<a href="/category/{{ category.title }}">{{ category.title }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</em></p>
