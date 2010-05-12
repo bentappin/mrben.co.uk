@@ -20,7 +20,7 @@ urlpatterns = patterns('',
 
 	# Pages
 	(r'^categories/$', category_list),
-	(r'^category/(?P<category_title>[-\w]+)/$', category_detail),
+	(r'^category/(?P<category_slug>[-\w]+)/$', category_detail),
 	
 	# "Blog" pages
 	(r'^(entry|project|portfolio)/(?P<object_id>\d+)/$', entry_detail),

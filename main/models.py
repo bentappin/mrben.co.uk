@@ -13,7 +13,7 @@ class Category(models.Model):
     slug = models.SlugField()
 
     def get_absolute_url(self):
-        return "/category/%s/" % self
+        return "/category/%s/" % self.slug
 
     def __unicode__(self):
         return u'%s' % self.title

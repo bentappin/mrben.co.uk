@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
@@ -34,10 +34,11 @@ def category_list(request):
 	    'category_list': category_list,
 	    }, context_instance=RequestContext(request))
 
-def category_detail(request, category_title):
+def category_detail(request, category_slug):
 	""" Lists all blog posts in a particular category. """
-	entry_list = Entry.objects.published().filter(categories__title=category_title)
-	return _paginated_entry_list(request, category_title, entry_list)
+	category = get_object_or_404(Category, slug=category_slug)
+	entry_list = Entry.objects.published().filter(categories__slug=category_slug)
+	return _paginated_entry_list(request, category.title, entry_list)
 
 def _paginated_entry_list(request, title, entry_list):
 	""" Generic view for displaying paginated lists of Entry instances. """
@@ -66,7 +67,7 @@ def _paginated_entry_list(request, title, entry_list):
 def _get_featured_project():
 	""" Get a blog entry suitable for a feature box. """
 	try:
-		entry = Entry.objects.published().filter(categories__title__in=['Projects','Portfolio']).order_by('?')[0]
+		entry = Entry.objects.published().filter(categories__slug__in=['projects','portfolio']).order_by('?')[0]
 		return entry
 	except (Entry.DoesNotExist, IndexError):
 		pass
