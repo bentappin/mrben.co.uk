@@ -10,6 +10,7 @@ class Category(models.Model):
     """Category model."""
 
     title = models.CharField(max_length=40)
+    slug = models.SlugField()
 
     def get_absolute_url(self):
         return "/category/%s/" % self
