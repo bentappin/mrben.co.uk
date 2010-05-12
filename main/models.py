@@ -39,7 +39,6 @@ class Entry(models.Model):
     author = models.ForeignKey(User, blank=True, null=True)
     body = models.TextField()
     body_highlighted = models.TextField(blank=True, null=True)
-    teaser = models.TextField()
     allow_comments = models.BooleanField(default=True)
     publish = models.DateTimeField()
     created = models.DateTimeField(auto_now_add=True)
