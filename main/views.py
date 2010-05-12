@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
+from django.conf import settings
 
 from mrben.main.models import Entry, Category
 
@@ -42,7 +43,7 @@ def category_detail(request, category_slug):
 
 def _paginated_entry_list(request, title, entry_list):
 	""" Generic view for displaying paginated lists of Entry instances. """
-	paginator = Paginator(entry_list, 4)
+	paginator = Paginator(entry_list, settings.ENTRIES_PER_PAGE)
 	
 	# See if a specific page is required, if not default to first.
 	try:
