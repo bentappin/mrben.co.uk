@@ -120,6 +120,7 @@ DISQUS_API_KEY = ''
 DISQUS_WEBSITE_SHORTNAME = ''
 
 ENTRIES_PER_PAGE = 4
+FEED_CACHE_TIMEOUT = 1800
 
 try:
 	from settings_local import *

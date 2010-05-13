@@ -1,6 +1,8 @@
 from django.contrib.syndication.views import Feed
 from django.utils.feedgenerator import Atom1Feed
 from django.shortcuts import get_object_or_404
+from django.core.cache import cache
+from django.conf import settings
 
 from mrben.main.models import Entry, Category
 
@@ -12,7 +14,13 @@ class EntriesFeed(Feed):
     feed_type = Atom1Feed
 
     def items(self):
-        return Entry.objects.published().exclude(categories__slug='portfolio')
+        entries = cache.get('entries')
+        
+        if entries is None:
+            entries = Entry.objects.published().exclude(categories__slug='portfolio')
+            cache.set('entries', entries, settings.FEED_CACHE_TIMEOUT)
+            
+        return entries
 
     def item_title(self, item):
         return item.title
@@ -44,7 +52,14 @@ class CategoriesFeed(EntriesFeed):
         return get_object_or_404(Category, slug=category_slug)
     
     def items(self, obj):
-        return Entry.objects.published().filter(categories=obj)
+        cache_key = 'entries %s' % obj.slug
+        entries = cache.get(cache_key)
+
+        if entries is None:
+            entries = Entry.objects.published().filter(categories=obj)
+            cache.set(cache_key, entries, settings.FEED_CACHE_TIMEOUT)
+        
+        return entries
     
     def title(self, obj):
         return "mrben.co.uk - entries in the %s category" % obj
