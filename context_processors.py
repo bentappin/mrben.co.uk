@@ -19,7 +19,7 @@ def latest_tweets(request):
 	except:
 		return {"tweets": None }
 		
-	cache.set( 'tweets', tweets, settings.TWITTER_TIMEOUT )
+	cache.set( 'tweets', tweets, settings.TWITTER_CACHE_TIMEOUT )
 	
 	return {"tweets": tweets}
 
@@ -38,7 +38,7 @@ def latest_lastfm_tracks(request):
 	except:
 		return {"tracks": None }
 	
-	cache.set( 'tracks', tracks, settings.LASTFM_TIMEOUT )
+	cache.set( 'tracks', tracks, settings.LASTFM_CACHE_TIMEOUT )
 	
 	return {'tracks': tracks}
 
@@ -68,7 +68,7 @@ def random_flickr_picture(request):
 	
 	picture = {'src': image_url, 'href': flickr_url}
 	
-	cache.set( 'picture', picture, settings.FLICKR_TIMEOUT)
+	cache.set( 'picture', picture, settings.FLICKR_CACHE_TIMEOUT)
 	
 	return {'picture': picture}
 	
