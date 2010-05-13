@@ -6,7 +6,7 @@ from django.contrib import admin
 from django.http import HttpResponseRedirect
 
 from mrben.main.views import index, entry_detail, category_detail, category_list
-from mrben.main.feeds import EntriesFeed
+from mrben.main.feeds import EntriesFeed, CategoriesFeed
 
 
 admin.autodiscover()
@@ -27,7 +27,8 @@ urlpatterns = patterns('',
     (r'^(entry|project|portfolio)/(?P<slug>[-\w]+)/$', entry_detail),
     
 	# Syndication feeds
-	(r'^feed/$', EntriesFeed()),
+    (r'^feed/$', EntriesFeed() ),
+    (r'^feed/(?P<category_slug>[-\w]+)/$', CategoriesFeed() ),
 	
 	(r'^favicon\.ico$', lambda r: HttpResponseRedirect('/static/images/favicon.ico')),
 )
