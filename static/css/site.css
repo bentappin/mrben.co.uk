@@ -212,12 +212,16 @@ body {
 	clear: both;
 }
 
+#features {
+	padding: 0;
+	margin-right: 15px;
+	float: right;
+	width: 225px;
+}
+
 .feature {
 	padding: 15px 15px;
-	margin: 0 15px 15px 0;
-	float: right;
-	display: inline;
-	width: 195px;
+	margin-bottom: 15px;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 }
