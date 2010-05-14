@@ -1,3 +1,4 @@
+import os, random
 from datetime import datetime
 
 from django.conf import settings
@@ -5,6 +6,31 @@ from django.core.cache import cache
 
 import twitter, pylast, flickrapi, random
 
+
+def features(request):
+	random.seed()
+	prefix_path = 'includes/secondary'
+	
+	choices = []
+	for template_dir in settings.TEMPLATE_DIRS:
+		path = os.path.join(template_dir, prefix_path)
+		for f in os.listdir(path):			
+			choices.append(os.path.join(prefix_path, f))
+	
+	features = []
+	used_indexes = []
+	c_max = len(choices)
+	for i in range(settings.FEATURE_SIDEBAR_COUNT):
+		if len(used_indexes)==0:
+			index = random.randrange(0, c_max)
+		
+		while index in used_indexes:
+			index = random.randrange(0, c_max)
+			
+		used_indexes.append(index)
+		features.append(choices[index])
+	
+	return {'features': features}
 
 def latest_tweets(request):
 	tweets = cache.get('tweets')

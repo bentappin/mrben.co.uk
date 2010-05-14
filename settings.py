@@ -105,6 +105,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'mrben.context_processors.latest_tweets',
     'mrben.context_processors.latest_lastfm_tracks',
     'mrben.context_processors.random_flickr_picture',
+    'mrben.context_processors.features',
 )
 
 TWITTER_USER = ''
@@ -122,6 +123,7 @@ DISQUS_API_KEY = ''
 DISQUS_WEBSITE_SHORTNAME = ''
 
 ENTRIES_PER_PAGE = 4
+FEATURE_SIDEBAR_COUNT = 2
 FEED_CACHE_TIMEOUT = 1800
 
 CACHE_MIDDLEWARE_SECONDS = 60
