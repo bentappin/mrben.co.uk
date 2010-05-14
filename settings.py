@@ -65,10 +65,12 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
 ROOT_URLCONF = 'mrben.urls'
@@ -121,6 +123,9 @@ DISQUS_WEBSITE_SHORTNAME = ''
 
 ENTRIES_PER_PAGE = 4
 FEED_CACHE_TIMEOUT = 1800
+
+CACHE_MIDDLEWARE_SECONDS = 60
+CACHE_MIDDLEWARE_KEY_PREFIX = 'mrben'
 
 try:
 	from settings_local import *
