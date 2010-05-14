@@ -4,9 +4,8 @@
 	<p>&hellip; on <a href="http://twitter.com/">Twitter</a>.</p>
 		<ul>
         {% for t in tweets %}
-			<li>{{ t.text }}</li>
+			<li>{{ t.text|urlize }}</li>
 		{% endfor %}
 		</ul>
-    
 </div>
 {% endif %}

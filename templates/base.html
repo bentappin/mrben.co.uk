@@ -24,8 +24,9 @@
 		<div id="content">
 			{% block content %}{% endblock %}
 			
-			{% include feature_1 %}
-			{% include feature_2 %}
+			{% for feature in features %}
+				{% include feature %}
+			{% endfor %}
 		</div><!-- /content -->
 		&nbsp;
 		<div id="footer" class="is_readable">

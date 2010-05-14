@@ -1,3 +1,5 @@
+import os, random
+
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse
 from django.template import RequestContext
@@ -63,6 +65,7 @@ def _paginated_entry_list(request, title, entry_list):
 	    'project': None,
 	    'link_list': None,
 	    'show_comments': False,
+	    'features': _get_features(2),
 	    }, context_instance=RequestContext(request))
 
 def _get_featured_project():
@@ -72,4 +75,28 @@ def _get_featured_project():
 		return entry
 	except (Entry.DoesNotExist, IndexError):
 		pass
-	return
+
+def _get_features(num=1):
+	random.seed()
+	prefix_path = 'includes/secondary'
+	
+	choices = []
+	for template_dir in settings.TEMPLATE_DIRS:
+		path = os.path.join(template_dir, prefix_path)
+		for f in os.listdir(path):			
+			choices.append(os.path.join(prefix_path, f))
+	
+	features = []
+	used_indexes = []
+	c_max = len(choices)
+	for i in range(num):
+		if len(used_indexes)==0:
+			index = random.randrange(0, c_max)
+		
+		while index in used_indexes:
+			index = random.randrange(0, c_max)
+			
+		used_indexes.append(index)
+		features.append(choices[index])
+	
+	return features
