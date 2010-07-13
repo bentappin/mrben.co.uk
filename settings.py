@@ -36,13 +36,13 @@ SITE_ID = 1
 USE_I18N = True
 
 # Calculated site root
-PATH_SITE_ROOT = os.path.normpath(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
 
 BASE_URL = 'http://localhost:8000'
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = os.path.join(PATH_SITE_ROOT, 'static')
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
