@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
-from django.views.generic.simple import direct_to_template
+from django.views.generic.simple import redirect_to
 from django.views.generic import list_detail
 from django.contrib import admin
 from django.http import HttpResponseRedirect
@@ -28,6 +28,7 @@ urlpatterns = patterns('',
     
 	# Syndication feeds
     (r'^feed/$', EntriesFeed() ),
+    (r'^blog/feed/$', redirect_to, { 'url': '/feed/', 'permanent': True } ),
     (r'^feed/(?P<category_slug>[-\w]+)/$', CategoriesFeed() ),
 	
 	(r'^favicon\.ico$', lambda r: HttpResponseRedirect('/static/images/favicon.ico')),
