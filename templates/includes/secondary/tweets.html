@@ -1,10 +1,12 @@
+{% load tags %}
+
 {% if tweets %}
 <div class="feature is_readable">
 	<h2>Something I said</h2>
 	<p>&hellip; on <a href="http://twitter.com/">Twitter</a>.</p>
 		<ul>
         {% for t in tweets %}
-			<li>{{ t.text|urlize }}</li>
+			<li>{{ t.text|urlize|twitterize }}</li>
 		{% endfor %}
 		</ul>
 </div>
