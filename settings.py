@@ -108,6 +108,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'mrben.context_processors.features',
 )
 
+TWEET_LIMIT = 5
 TWITTER_USER = ''
 TWITTER_CACHE_TIMEOUT = 120
 LASTFM_KEY = ''

@@ -37,11 +37,20 @@ def latest_tweets(request):
 
 	if tweets is None:
 		try:
-			tweets = twitter.Api().GetUserTimeline(settings.TWITTER_USER, )[:5]
-			for tweet in tweets:
-				tweet.date= datetime.strptime( tweet.created_at, "%a %b %d %H:%M:%S +0000 %Y" )
+			fetched_tweets = twitter.Api().GetUserTimeline(settings.TWITTER_USER,)
+			tweets = []
+			num_tweets = 0
+			
+			for tweet in fetched_tweets:
+				if tweet.text[0] != '@':
+					tweet.date= datetime.strptime(tweet.created_at, "%a %b %d %H:%M:%S +0000 %Y")
+					tweets.append(tweet)
+					num_tweets += 1
+					
+				if num_tweets == settings.TWEET_LIMIT:
+					break
 				
-			cache.set( 'tweets', tweets, settings.TWITTER_CACHE_TIMEOUT )
+			cache.set('tweets', tweets, settings.TWITTER_CACHE_TIMEOUT)
 		except:
 			tweets = None
 	
@@ -89,7 +98,7 @@ def random_flickr_picture(request):
 			
 			picture = {'src': image_url, 'href': flickr_url}
 			
-			cache.set( 'picture', picture, settings.FLICKR_CACHE_TIMEOUT)
+			cache.set('picture', picture, settings.FLICKR_CACHE_TIMEOUT)
 		except:
 			picture = None
 	
