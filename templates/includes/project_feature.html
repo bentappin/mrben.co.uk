@@ -1,9 +1,6 @@
 {% if project %}
-<div class="feature is_readable">
 	<h2>Something I did</h2>
 	<h3>{{ project.title }}</h3>
 	{{ project.teaser|safe }}
-	
 	<a class="more_link" href="{{ project.get_absolute_url }}">More...</a>
-</div>
 {% endif %}

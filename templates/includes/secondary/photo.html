@@ -1,9 +1,5 @@
 {% if picture %}
-<div class="feature is_readable">
-
 	<h2>Something I saw</h2>
 	<p>&hellip; and put on <a href="http://flickr.com/">flickr</a>.</p>
-	
-	<a href="{{ picture.href }}" title="A picture form flickr"><img src="{{ picture.src }}" style="width: 100%;" /></a>
-</div>
+	<a href="{{ picture.href }}" title="A picture form flickr"><img src="{{ picture.src }}"/></a>
 {% endif %}

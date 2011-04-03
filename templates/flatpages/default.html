@@ -3,18 +3,16 @@
 {% block title %}{{ flatpage.title }}{% endblock %}
 
 {% block content %}
-	<div id="inner_content" class="is_readable">
+	<div class="article">
 	{{ flatpage.content|safe }}
 	</div>
 {% endblock %}
 
 {% block features %}
-	<div id="features">
-		<div class="feature is_readable">
-			<h2>Elsewhere</h2>
-			<p>I exist in many forms, but online you can find me lurking here...</p>
-			{% include 'includes/social_networks.html' %}
-		</div>
+	<div id="sub-content">
+		<h2>Elsewhere</h2>
+		<p>I exist in many forms, but online you can find me lurking here...</p>
+		{% include 'includes/social_networks.html' %}
 		
 		{% for feature in features %}
 			{% include feature %}

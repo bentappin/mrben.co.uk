@@ -3,11 +3,5 @@
 {% block title %}{{ entry.title }}{% endblock %}
 
 {% block content %}
-<div id="blog" class="is_readable">
-	<ul class="entries_list">
-		<li class="blog_wrapper">
-			{% include 'includes/entry.html' %}
-		</li>
-	</ul>
-</div>
+	{% include 'includes/entry.html' %}
 {% endblock %}

@@ -1,11 +1,9 @@
 {% if tracks %}
-<div class="feature is_readable">
 	<h2>Something I heard</h2>
 	<p>&hellip; according to <a href="http://last.fm/">last.fm</a>.</p>
-		<ul>
-        {% for t in tracks %}
-			<li>{{ t.track }}</li>
-		{% endfor %}
-		</ul>
-</div>
+	<ul class="itemised_list">
+       {% for t in tracks %}
+		<li>{{ t.track }}</li>
+	{% endfor %}
+	</ul>
 {% endif %}

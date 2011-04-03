@@ -1,11 +1,8 @@
 {% if link_list %}
-<div class="feature is_readable">
 	<h2>Some links ordered alphabetically</h2>
-	
 	<ul>
 		{% for link in link_list %}
 			<li><a href="{{ link.url }}">{{ link.title }}</a></li>
 		{% endfor %}
 	</ul>
-</div>
 {% endif %}

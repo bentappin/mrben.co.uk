@@ -5,26 +5,17 @@
 {% block title %}web developer and tinkerer{% endblock %}
 
 {% block content %}
-
-<div id="blog" class="is_readable">
-	<h2>{{ title }}</h2>
-	<ul class="entries_list">
-		<li class="blog_wrapper">
+	<div class="article">
+		<h2>{{ title }}</h2>
 		{% for entry in entries.object_list %}
-		
 			{% include 'includes/entry.html' %}
-			
 			{% if not forloop.last %}
 			<hr />
 			{% endif %}
-			
 		{% endfor %}
-		</li>
-	</ul>
+	</div>
 	<hr />
 	{% with entries as page %}
 		{% include 'includes/pagination.html' %}
 	{% endwith %}
-</div>
-
 {% endblock %}

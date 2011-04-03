@@ -5,37 +5,34 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<link href="http://mrben.co.uk/feed/" rel="alternate" type="application/atom+xml" title="mrben.co.uk's blog" />
-	<link rel="stylesheet" href="/static/css/reset.css" type="text/css" media="screen" />
+
 	<link rel="stylesheet" href="/static/css/site.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="/static/css/syntax_highlighting.css" type="text/css" media="screen" />
 	<!--[if IE 6]><link rel="stylesheet" href="/static/css/ie6.css" type="text/css" media="screen" /><![endif]-->
 	<title>mrben - {% block title %}{% endblock %}</title>
 </head>
 <body>
-	<div class="container">
-		<div id="header" class="is_readable">
-			<div id="logo"><a href="/"><h1>mrben<small>.co.uk</small></h1></a></div>
-			<ul>
-				<li class="first"><a href="/about/">About</a></li>
-				<li><a href="/categories/">Categories</a></li>
-			</ul>
-		</div>
+	<div id="header" class="wrapper">
+		<h1><a href="/">mrben.co.uk</a></h1>
+	</div>
 		
-		<div id="content">
+	<div id="content" class="wrapper">
+		<div id="main-content">
 			{% block content %}{% endblock %}
-			
-			{% block features %}
-				<div id="features">
+		</div>
+		{% block features %}
+			<div id="sub-content">
+				<h2>About me</h2>
+				<p>Hi, I'm Ben Tappin. I make [web] apps. You can <a href="/about/">read more</a> about me if you wish.
+
 				{% for feature in features %}
 					{% include feature %}
 				{% endfor %}
-				</div>
-			{% endblock %}
-		</div><!-- /content -->
-		&nbsp;
-		<div id="footer" class="is_readable">
-			Made by Ben Tappin. <a href="http://mrben.co.uk/feed/" class="feed">&nbsp;</a>
-		</div>
-	</div> <!-- /container -->
+			</div>
+		{% endblock %}
+	</div>
+	<div id="footer">
+		<p>Made by Ben Tappin. <a href="http://mrben.co.uk/feed/" class="feed"></a></p>
+	</div>
 </body>
 </html>
