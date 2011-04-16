@@ -38,7 +38,7 @@ USE_I18N = True
 # Calculated site root
 PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
 
-BASE_URL = 'http://localhost:8000'
+BASE_URL = 'http://mrben.co.uk'
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
@@ -52,7 +52,7 @@ MEDIA_URL = BASE_URL + '/static/'
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/'
+ADMIN_MEDIA_PREFIX = MEDIA_URL + 'admin/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = ''
