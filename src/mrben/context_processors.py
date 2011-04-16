@@ -61,7 +61,7 @@ def latest_lastfm_tracks(request):
 	
 	if tracks is None:
 		try:
-			network = (pylast.get_lastfm_network(api_key = settings.LASTFM_KEY,
+			network = (pylast.LastFMNetwork(api_key = settings.LASTFM_KEY,
 				        api_secret = settings.LASTFM_SECRET, username = settings.LASTFM_USER,
 				        password_hash = settings.LASTFM_PWDHASH))
 			user = pylast.User('mrben_', network)
