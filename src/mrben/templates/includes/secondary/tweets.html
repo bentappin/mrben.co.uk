@@ -5,7 +5,7 @@
 	<p>&hellip; on <a href="http://twitter.com/">Twitter</a>.</p>
 	<ul class="itemised_list">
        {% for t in tweets %}
-		<li>{{ t.text|safe|urlize }}</li>
+		<li>{{ t.text|safe|twitterize|urlize }}</li>
 	{% endfor %}
 	</ul>
 {% endif %}
