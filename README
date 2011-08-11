@@ -3,8 +3,18 @@ mrben : a blog
 
 This is the code for my blog and was created as an exercise in learning Django and integrating with a few popular APIs.
 
-Consequently there are plenty of things I would do differently!
+Consequently there are plenty of things I would do differently.
 
-I'm going to try and do that over the coming months.
+I'm going to try and do that ... eventually.
+
+This project uses buildout.
+
+```
+python bootstrap.py
+./bin/buildout
+./bin/django syncdb
+./bin/django migrate
+./bin/django runserver
+```
 
 You will need to define your settings in settings.py or settings_local.py.
