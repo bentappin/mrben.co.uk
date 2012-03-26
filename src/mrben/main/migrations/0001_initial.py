@@ -5,9 +5,9 @@ from south.v2 import SchemaMigration
 from django.db import models
 
 class Migration(SchemaMigration):
-    
+
     def forwards(self, orm):
-        
+
         # Adding model 'Category'
         db.create_table('main_category', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
@@ -46,10 +46,10 @@ class Migration(SchemaMigration):
             ('title', self.gf('django.db.models.fields.CharField')(max_length=50)),
         ))
         db.send_create_signal('main', ['Link'])
-    
-    
+
+
     def backwards(self, orm):
-        
+
         # Deleting model 'Category'
         db.delete_table('main_category')
 
@@ -61,8 +61,8 @@ class Migration(SchemaMigration):
 
         # Deleting model 'Link'
         db.delete_table('main_link')
-    
-    
+
+
     models = {
         'auth.group': {
             'Meta': {'object_name': 'Group'},
@@ -127,5 +127,5 @@ class Migration(SchemaMigration):
             'url': ('django.db.models.fields.URLField', [], {'max_length': '200'})
         }
     }
-    
+
     complete_apps = ['main']

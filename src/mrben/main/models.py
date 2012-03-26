@@ -29,7 +29,7 @@ class Entry(models.Model):
     LIVE_STATUS = 1
     DRAFT_STATUS = 2
     HIDDEN_STATUS = 3
-    STATUS_CHOICES = (	(LIVE_STATUS, 'Live'),
+    STATUS_CHOICES = (  (LIVE_STATUS, 'Live'),
                               (DRAFT_STATUS, 'Draft'),
                               (HIDDEN_STATUS, 'Hidden'),
                               )
@@ -59,11 +59,11 @@ class Entry(models.Model):
         html = html.replace('&gt;', '>')
         html = html.replace('&amp;', '&')
         return html
-    
+
     def highlight_code(self, html):
-        """ Highlight code snippets. Based on: 
+        """ Highlight code snippets. Based on:
             http://www.saltycrane.com/blog/2008/08/django-blog-project-12-adding-pygments-syntax-highlighting/ """
-        
+
         from BeautifulSoup import BeautifulSoup
         from pygments import highlight
         from pygments.lexers import get_lexer_by_name

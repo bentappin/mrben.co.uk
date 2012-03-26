@@ -1,14 +1,13 @@
 from datetime import datetime
 
-from django.db.models import Manager 
+from django.db.models import Manager
 
 
 class PublicManager(Manager):
-	"""Returns published posts that are not in the future."""
-	def __init__(self, *args, **kwargs):
-		self.filter_dict = dict(status=1, publish__lte=datetime.now())
-		super(PublicManager, self).__init__(*args, **kwargs)
-	
-	def published(self):
-		return self.get_query_set().filter(status=1, publish__lte=datetime.now())
-		
+    """Returns published posts that are not in the future."""
+    def __init__(self, *args, **kwargs):
+        self.filter_dict = dict(status=1, publish__lte=datetime.now())
+        super(PublicManager, self).__init__(*args, **kwargs)
+
+    def published(self):
+        return self.get_query_set().filter(status=1, publish__lte=datetime.now())

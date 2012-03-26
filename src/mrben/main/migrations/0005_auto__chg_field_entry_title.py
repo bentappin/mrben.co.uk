@@ -5,19 +5,19 @@ from south.v2 import SchemaMigration
 from django.db import models
 
 class Migration(SchemaMigration):
-    
+
     def forwards(self, orm):
-        
+
         # Changing field 'Entry.title'
         db.alter_column('main_entry', 'title', self.gf('django.db.models.fields.CharField')(max_length=255))
-    
-    
+
+
     def backwards(self, orm):
-        
+
         # Changing field 'Entry.title'
         db.alter_column('main_entry', 'title', self.gf('django.db.models.fields.CharField')(max_length=40))
-    
-    
+
+
     models = {
         'auth.group': {
             'Meta': {'object_name': 'Group'},
@@ -84,5 +84,5 @@ class Migration(SchemaMigration):
             'url': ('django.db.models.fields.URLField', [], {'max_length': '200'})
         }
     }
-    
+
     complete_apps = ['main']

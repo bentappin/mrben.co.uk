@@ -5,18 +5,18 @@ from south.v2 import DataMigration
 from django.db import models
 
 class Migration(DataMigration):
-    
+
     def forwards(self, orm):
         import uuid
         for entry in orm.Entry.objects.all():
             entry.guid = str(uuid.uuid4())
             entry.save()
-    
+
     def backwards(self, orm):
         for entry in orm.Entry.objects.all():
             entry.guid = ""
             entry.save()
-    
+
     models = {
         'auth.group': {
             'Meta': {'object_name': 'Group'},
@@ -82,5 +82,5 @@ class Migration(DataMigration):
             'url': ('django.db.models.fields.URLField', [], {'max_length': '200'})
         }
     }
-    
+
     complete_apps = ['main']
