@@ -7,10 +7,13 @@ from mrben.main.managers import PublicManager
 
 
 class Category(models.Model):
-    """Category model."""
-
     title = models.CharField(max_length=40)
     slug = models.SlugField()
+
+    class Meta:
+        verbose_name = ('category')
+        verbose_name_plural = ('categories')
+        ordering = ['title']
 
     def get_absolute_url(self):
         return "/category/%s/" % self.slug
@@ -18,21 +21,17 @@ class Category(models.Model):
     def __unicode__(self):
         return u'%s' % self.title
 
-    class Meta:
-        verbose_name = ('category')
-        verbose_name_plural = ('categories')
-        ordering = ['title']
-
 
 class Entry(models.Model):
-    """Entry model."""
+    """Models a blog entry."""
     LIVE_STATUS = 1
     DRAFT_STATUS = 2
     HIDDEN_STATUS = 3
-    STATUS_CHOICES = (  (LIVE_STATUS, 'Live'),
-                              (DRAFT_STATUS, 'Draft'),
-                              (HIDDEN_STATUS, 'Hidden'),
-                              )
+    STATUS_CHOICES = (
+        (LIVE_STATUS, 'Live'),
+        (DRAFT_STATUS, 'Draft'),
+        (HIDDEN_STATUS, 'Hidden'),
+    )
 
     title = models.CharField(max_length=255)
     slug = models.SlugField(blank=False, null=False, unique=True)
@@ -47,6 +46,15 @@ class Entry(models.Model):
     status = models.IntegerField(choices=STATUS_CHOICES, default=DRAFT_STATUS)
     guid = models.CharField(max_length='36', blank=False, null=False)
     objects = PublicManager()
+
+    class Meta:
+        ordering = ['-publish']
+        verbose_name_plural = 'entries'
+
+    class Admin:
+        list_display = ('title', 'publish', 'status')
+        list_filter = ('publish', 'categories', 'status')
+        search_fields = ('title', 'body')
 
     def __unicode__(self):
         return u'%s' % self.title
@@ -90,23 +98,14 @@ class Entry(models.Model):
         self.body_highlighted = self.highlight_code(self.body)
         super(Entry, self).save(*args, **kwargs)
 
-    class Admin:
-        list_display = ('title', 'publish', 'status')
-        list_filter = ('publish', 'categories', 'status')
-        search_fields = ('title', 'body')
-
-    class Meta:
-        ordering = ['-publish']
-        verbose_name_plural = 'entries'
-
 
 class Link(models.Model):
     """Link model."""
     title = models.CharField(max_length=50)
     url = models.URLField()
 
-    def __unicode__(self):
-        return u'%s - %s' % (self.title, self.url)
-
     class Meta:
         ordering = ['title']
+
+    def __unicode__(self):
+        return u'%s - %s' % (self.title, self.url)

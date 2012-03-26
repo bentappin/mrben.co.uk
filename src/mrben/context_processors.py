@@ -1,10 +1,13 @@
-import os, random
+import os
+import random
 from datetime import datetime
+
+import pylast
+import twitter
+import flickrapi
 
 from django.conf import settings
 from django.core.cache import cache
-
-import twitter, pylast, flickrapi, random
 
 
 def features(request):
@@ -32,6 +35,7 @@ def features(request):
 
     return {'features': features}
 
+
 def latest_tweets(request):
     tweets = cache.get('tweets')
 
@@ -56,6 +60,7 @@ def latest_tweets(request):
 
     return {'tweets': tweets}
 
+
 def latest_lastfm_tracks(request):
     tracks = cache.get('tracks')
 
@@ -75,6 +80,7 @@ def latest_lastfm_tracks(request):
             tracks = None
 
     return {'tracks': tracks}
+
 
 def random_flickr_picture(request):
     picture = cache.get('picture')

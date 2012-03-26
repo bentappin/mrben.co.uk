@@ -1,16 +1,16 @@
-from django.contrib.syndication.views import Feed
-from django.utils.feedgenerator import Atom1Feed
-from django.shortcuts import get_object_or_404
-from django.core.cache import cache
 from django.conf import settings
+from django.core.cache import cache
+from django.shortcuts import get_object_or_404
+from django.utils.feedgenerator import Atom1Feed
+from django.contrib.syndication.views import Feed
 
 from mrben.main.models import Entry, Category
 
 
 class EntriesFeed(Feed):
-    title = "mrben.co.uk | web developer and tinkerer"
-    link = '/feed/'
-    description = "The personal blog of Ben Tappin - web developer and tinkerer."
+    title = u"mrben.co.uk | web developer and tinkerer"
+    link = "/feed/"
+    description = u"The personal blog of Ben Tappin - web developer and tinkerer."
     feed_type = Atom1Feed
 
     def items(self):
@@ -62,7 +62,7 @@ class CategoriesFeed(EntriesFeed):
         return entries
 
     def title(self, obj):
-        return "mrben.co.uk - entries in the %s category" % obj
+        return u"mrben.co.uk - entries in the %s category" % obj
 
     def link(self, obj):
         return obj.get_absolute_url()

@@ -1,8 +1,8 @@
-from django.shortcuts import render_to_response, get_object_or_404
+from django.conf import settings
 from django.http import HttpResponse
 from django.template import RequestContext
+from django.shortcuts import render_to_response, get_object_or_404
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
-from django.conf import settings
 
 from mrben.main.models import Entry, Category
 
@@ -12,6 +12,7 @@ def index(request):
     entry_list = (Entry.objects.published().exclude(categories__title='Projects')
                     .exclude(categories__title='Portfolio').order_by('-publish'))
     return _paginated_entry_list(request, 'Some of my news', entry_list)
+
 
 def entry_detail(request, object_id=None, slug=None):
     """ Displays a single blog post with comments (if enabled). """
@@ -28,6 +29,7 @@ def entry_detail(request, object_id=None, slug=None):
         'show_comments': True,
         }, context_instance=RequestContext(request))
 
+
 def category_list(request):
     """ Lists all categories with links to blog entry lists. """
     category_list = Category.objects.all().order_by('title')
@@ -35,11 +37,13 @@ def category_list(request):
         'category_list': category_list,
         }, context_instance=RequestContext(request))
 
+
 def category_detail(request, category_slug):
     """ Lists all blog posts in a particular category. """
     category = get_object_or_404(Category, slug=category_slug)
     entry_list = Entry.objects.published().filter(categories__slug=category_slug)
     return _paginated_entry_list(request, category.title, entry_list)
+
 
 def _paginated_entry_list(request, title, entry_list):
     """ Generic view for displaying paginated lists of Entry instances. """
@@ -64,6 +68,7 @@ def _paginated_entry_list(request, title, entry_list):
         'link_list': None,
         'show_comments': False,
         }, context_instance=RequestContext(request))
+
 
 def _get_featured_project():
     """ Get a blog entry suitable for a feature box. """
