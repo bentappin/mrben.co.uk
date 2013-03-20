@@ -1,0 +1,26 @@
+{% load humanize %}
+{% load disqus_tags %}
+{% disqus_dev %}
+
+{% if entry %}
+	<div class="article">
+		<h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
+		<p class="date">{{ entry.publish|naturalday|capfirst }}</p>
+		{% if entry.body_highlighted %}
+			{{ entry.body_highlighted|safe }}
+		{% else %}
+			{{ entry.body|safe }}
+		{% endif %}
+		
+		<p class="inline_categories"><em>Categories: {% for category in entry.categories.all %}<a href="/category/{{ category.slug }}">{{ category.title }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</em></p>
+
+		<p class="comment_count"><a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a></p>
+		{% disqus_num_replies %}
+		
+		{% if show_comments %}
+			{% disqus_show_comments %}
+		{% endif %}
+	</div>
+{% else %}
+	<p>Error finding entry.</p>
+{% endif %}

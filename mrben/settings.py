@@ -1,6 +1,7 @@
 # Django settings for mrben project.
-
 import os
+
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__).decode('utf-8'))
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -38,9 +39,6 @@ SITE_ID = 1
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
 USE_I18N = True
-
-# Calculated site root
-PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
 
 BASE_URL = 'http://mrben.co.uk'
 
@@ -94,7 +92,7 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.humanize',
     'django.contrib.admin',
-    'mrben.main',
+    'main',
     'disqus',
     'south',
 )
@@ -105,8 +103,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
     'django.core.context_processors.request',
-
-    'mrben.context_processors.latest_tweets',
     'mrben.context_processors.latest_lastfm_tracks',
     'mrben.context_processors.random_flickr_picture',
     'mrben.context_processors.features',

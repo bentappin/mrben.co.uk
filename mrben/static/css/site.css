@@ -50,7 +50,7 @@ table {
 
 /* Type */
 body {
-	font-family: Cambria, Georgia, "Times New Roman", serif;
+	font-family: 'Droid Serif', Cambria, Georgia, 'Times New Roman', serif;
 	line-height: 150%;
 }
 
@@ -129,6 +129,7 @@ h2 a:hover, h3 a:hover {
 body {
 	background-color: #002b36;
 	color: #FDF6E3;
+	border-top: 6px solid #d33682;
 }
 
 #footer {
@@ -177,12 +178,12 @@ p.date {
 }
 
 #main-content {
-	width: 480px;
+	width: 540px;
 	float: left;
 }
 
 #sub-content {
-	width: 360px;
+	width: 300px;
 	float: right;
 	padding: 0 0 0 40px;
 }

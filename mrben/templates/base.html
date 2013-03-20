@@ -5,7 +5,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<link href="http://mrben.co.uk/feed/" rel="alternate" type="application/atom+xml" title="mrben.co.uk's blog" />
-	<link  href="http://fonts.googleapis.com/css?family=Terminal+Dosis+Light:regular" rel="stylesheet" type="text/css" >
+	<link href="http://fonts.googleapis.com/css?family=Terminal+Dosis+Light:regular" rel="stylesheet" type="text/css" >
+	<link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="/static/css/site.css" type="text/css" media="screen" />
 	<!--[if IE 6]><link rel="stylesheet" href="/static/css/ie6.css" type="text/css" media="screen" /><![endif]-->
 	<title>mrben - {% block title %}{% endblock %}</title>
@@ -16,18 +17,23 @@
 	</div>
 		
 	<div id="content" class="wrapper">
-		<div id="main-content">
-			{% block content %}{% endblock %}
-		</div>
-		{% block features %}
-			<div id="sub-content">
-				<h2>About me</h2>
-				<p>Hi, I'm Ben Tappin. I make [web] apps. You can <a href="/about/">read more</a> about me if you wish.</p>
-
-				{% for feature in features %}
-					{% include feature %}
-				{% endfor %}
+		{% block full_content %}
+			<div id="main-content">
+				{% block content %}{% endblock %}
 			</div>
+			{% block features %}
+				<div id="sub-content">
+					<h2>About me</h2>
+					<p>
+						Hi, I'm Ben Tappin. I make [web] apps. You can <a href="/about/">read more</a>
+						about me. I'm available for freelance work.
+					</p>
+
+					{% for feature in features %}
+						{% include feature %}
+					{% endfor %}
+				</div>
+			{% endblock %}
 		{% endblock %}
 	</div>
 	<div id="footer">

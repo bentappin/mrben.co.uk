@@ -36,46 +36,23 @@ def features(request):
     return {'features': features}
 
 
-def latest_tweets(request):
-    tweets = cache.get('tweets')
-
-    if tweets is None:
-        try:
-            fetched_tweets = twitter.Api().GetUserTimeline(settings.TWITTER_USER,)
-            tweets = []
-            num_tweets = 0
-
-            for tweet in fetched_tweets:
-                if tweet.text[0] != '@':
-                    tweet.date= datetime.strptime(tweet.created_at, "%a %b %d %H:%M:%S +0000 %Y")
-                    tweets.append(tweet)
-                    num_tweets += 1
-
-                if num_tweets == settings.TWEET_LIMIT:
-                    break
-
-            cache.set('tweets', tweets, settings.TWITTER_CACHE_TIMEOUT)
-        except:
-            tweets = None
-
-    return {'tweets': tweets}
-
-
 def latest_lastfm_tracks(request):
     tracks = cache.get('tracks')
 
     if tracks is None:
         try:
-            network = (pylast.LastFMNetwork(api_key = settings.LASTFM_KEY,
-                            api_secret = settings.LASTFM_SECRET, username = settings.LASTFM_USER,
-                            password_hash = settings.LASTFM_PWDHASH))
+            network = pylast.LastFMNetwork(
+                api_key=settings.LASTFM_KEY,
+                api_secret=settings.LASTFM_SECRET,
+                username=settings.LASTFM_USER,
+                password_hash=settings.LASTFM_PWDHASH)
             user = pylast.User('mrben_', network)
             if user.get_recent_tracks() > 4:
                 tracks = user.get_recent_tracks()[:5]
             else:
                 tracks = user.get_recent_tracks()[:len(user.get_recent_tracks())]
 
-            cache.set( 'tracks', tracks, settings.LASTFM_CACHE_TIMEOUT )
+            cache.set('tracks', tracks, settings.LASTFM_CACHE_TIMEOUT)
         except:
             tracks = None
 
@@ -99,8 +76,10 @@ def random_flickr_picture(request):
             farm_id = photos.find('photos')[pic_index].attrib['farm']
             secret = photos.find('photos')[pic_index].attrib['secret']
 
-            image_url = "http://farm%s.static.flickr.com/%s/%s_%s_m.jpg" % (farm_id, server_id, picture_id, secret)
-            flickr_url = "http://www.flickr.com/photos/%s/%s" % (settings.FLICKR_ID, picture_id)
+            image_url = "http://farm%s.static.flickr.com/%s/%s_%s_m.jpg" % (
+                farm_id, server_id, picture_id, secret)
+            flickr_url = "http://www.flickr.com/photos/%s/%s" % (
+                settings.FLICKR_ID, picture_id)
 
             picture = {'src': image_url, 'href': flickr_url}
 

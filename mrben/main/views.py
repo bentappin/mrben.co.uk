@@ -8,14 +8,15 @@ from mrben.main.models import Entry, Category
 
 
 def index(request):
-    """ Homepage view. Displays a list of blogs posts. """
-    entry_list = (Entry.objects.published().exclude(categories__title='Projects')
-                    .exclude(categories__title='Portfolio').order_by('-publish'))
+    """Homepage view. Displays a list of blogs posts."""
+    entry_list = (Entry.objects.published().exclude(
+        categories__title='Projects').exclude(
+        categories__title='Portfolio').order_by('-publish'))
     return _paginated_entry_list(request, 'Some of my news', entry_list)
 
 
 def entry_detail(request, object_id=None, slug=None):
-    """ Displays a single blog post with comments (if enabled). """
+    """Displays a single blog post with comments (if enabled)."""
     try:
         if object_id:
             entry = Entry.objects.get(id=object_id)
@@ -31,7 +32,7 @@ def entry_detail(request, object_id=None, slug=None):
 
 
 def category_list(request):
-    """ Lists all categories with links to blog entry lists. """
+    """Lists all categories with links to blog entry lists."""
     category_list = Category.objects.all().order_by('title')
     return render_to_response('category_list.html', {
         'category_list': category_list,
@@ -39,14 +40,16 @@ def category_list(request):
 
 
 def category_detail(request, category_slug):
-    """ Lists all blog posts in a particular category. """
+    """Lists all blog posts in a particular category."""
     category = get_object_or_404(Category, slug=category_slug)
-    entry_list = Entry.objects.published().filter(categories__slug=category_slug)
-    return _paginated_entry_list(request, category.title, entry_list)
+    entry_list = Entry.objects.published().filter(
+        categories__slug=category_slug)
+    title = 'Category: %s' % category.title
+    return _paginated_entry_list(request, title, entry_list)
 
 
 def _paginated_entry_list(request, title, entry_list):
-    """ Generic view for displaying paginated lists of Entry instances. """
+    """Generic view for displaying paginated lists of Entry instances."""
     paginator = Paginator(entry_list, settings.ENTRIES_PER_PAGE)
 
     # See if a specific page is required, if not default to first.
@@ -71,9 +74,9 @@ def _paginated_entry_list(request, title, entry_list):
 
 
 def _get_featured_project():
-    """ Get a blog entry suitable for a feature box. """
+    """Get a blog entry suitable for a feature box."""
     try:
-        entry = Entry.objects.published().filter(categories__slug__in=['projects','portfolio']).order_by('?')[0]
-        return entry
+        return Entry.objects.published().filter(
+            categories__slug__in=['projects','portfolio']).order_by('?')[0]
     except (Entry.DoesNotExist, IndexError):
         pass
