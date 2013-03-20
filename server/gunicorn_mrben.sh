@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-LOGFILE=/var/local/sites/mrben/logs/gunicorn.log
+LOGFILE=/var/local/sites/mrben.co.uk/logs/gunicorn.log
 LOGDIR=$(dirname $LOGFILE)
 NUM_WORKERS=9
 # user/group to run as
