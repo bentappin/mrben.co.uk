@@ -175,6 +175,11 @@ p.date {
 	font-style: italic;
 }
 
+hr {
+	border: 0;
+	border-bottom: 1px solid #073642;
+}
+
 /* Layout */
 .left {
 	float: left;
