@@ -6,7 +6,9 @@
 
 {% block content %}
 	<div class="article">
-		<h2>{{ title }}</h2>
+		{% if title %}
+			<h2>{{ title }}</h2>
+		{% endif %}
 		{% for entry in entries.object_list %}
 			{% include 'includes/entry.html' %}
 			{% if not forloop.last %}

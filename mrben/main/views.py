@@ -12,7 +12,7 @@ def index(request):
     entry_list = (Entry.objects.published().exclude(
         categories__title='Projects').exclude(
         categories__title='Portfolio').order_by('-publish'))
-    return _paginated_entry_list(request, 'Some of my news', entry_list)
+    return _paginated_entry_list(request, '', entry_list)
 
 
 def entry_detail(request, object_id=None, slug=None):
