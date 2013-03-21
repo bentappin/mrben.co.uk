@@ -99,6 +99,25 @@ li {
 	padding-right: 20px;
 }
 
+.social {
+	font-size: 64px;
+}
+
+.social li {
+	display: inline-block;
+}
+
+.social li a {
+	text-decoration: none;
+	color: #FDF6E3;
+}
+
+.social li a:hover {
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+}
+
 /* Colours */
 h1 a:link,
 h1 a:visited {

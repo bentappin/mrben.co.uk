@@ -103,9 +103,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
     'django.core.context_processors.request',
-    'mrben.context_processors.latest_lastfm_tracks',
-    'mrben.context_processors.random_flickr_picture',
-    'mrben.context_processors.features',
 )
 
 TWEET_LIMIT = 5
