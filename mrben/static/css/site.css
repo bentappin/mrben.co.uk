@@ -257,7 +257,7 @@ p.date {
 /* end: Pagination */
 
 /* Syntax highlighting. Taken from pygments monokai style */
-pre, code { font-family: "courier new", courier; font-size: 12px; overflow: auto; word-wrap: break-word; background-color: #073642; padding: 10px; }
+pre, code { font-family: "courier new", courier; font-size: 12px; line-height: 150%; overflow: auto; word-wrap: break-word; background-color: #073642; padding: 10px; }
 .hll { background-color: #49483e }
 .c { color: #75715e } /* Comment */
 .err { color: #960050; background-color: #1e0010 } /* Error */
