@@ -2,7 +2,7 @@
 set -e
 LOGFILE=/var/local/sites/mrben.co.uk/logs/gunicorn.log
 LOGDIR=$(dirname $LOGFILE)
-NUM_WORKERS=9
+NUM_WORKERS=4
 # user/group to run as
 USER=webapps
 GROUP=webapps

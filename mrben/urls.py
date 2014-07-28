@@ -1,8 +1,7 @@
 from django.conf import settings
 from django.contrib import admin
-from django.conf.urls.defaults import *
+from django.conf.urls.defaults import patterns, include
 from django.http import HttpResponseRedirect
-from django.views.generic import list_detail
 from django.views.generic.simple import redirect_to
 
 from mrben.main.feeds import EntriesFeed, CategoriesFeed

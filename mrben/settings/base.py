@@ -1,27 +1,30 @@
 # Django settings for mrben project.
 import os
 
-PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__).decode('utf-8'))
+from django.core.exceptions import ImproperlyConfigured
+
+
+def get_env_variable(var_name):
+      """
+      Get the environment variable or return exception.
+      """
+      try:
+          return os.environ[var_name]
+      except KeyError:
+          error_msg = "Set the %s environment variable" % var_name
+          raise ImproperlyConfigured(error_msg)
+
+
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+    ('Ben Tappin', 'ben@mrben.co.uk'),
 )
 
 MANAGERS = ADMINS
-
-DATABASES = {
-    'default': {
-        'ENGINE': '',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
-    }
-}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -38,9 +41,7 @@ SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N = True
-
-BASE_URL = 'http://mrben.co.uk'
+USE_I18N = False
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
@@ -49,15 +50,12 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'static')
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = BASE_URL + '/static/'
+MEDIA_URL = '/static/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = MEDIA_URL + 'admin/'
-
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = ''
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -126,8 +124,3 @@ FEED_CACHE_TIMEOUT = 1800
 
 CACHE_MIDDLEWARE_SECONDS = 60
 CACHE_MIDDLEWARE_KEY_PREFIX = 'mrben'
-
-try:
-    from settings_local import *
-except ImportError:
-    pass
