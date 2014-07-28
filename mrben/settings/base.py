@@ -93,7 +93,8 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.humanize',
     'django.contrib.admin',
-    
+    'django.contrib.staticfiles',
+
     # Thirdparty apps.
     'disqus',
     'south',
