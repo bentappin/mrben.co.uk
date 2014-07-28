@@ -10,7 +10,10 @@
 			<h2>{{ title }}</h2>
 		{% endif %}
 		{% for entry in entries.object_list %}
-			{% include 'includes/entry.html' %}
+			<div class="article">
+				<h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
+				<p class="date">{{ entry.publish|naturalday|capfirst }}</p>
+			</div>
 			{% if not forloop.last %}
 			<hr />
 			{% endif %}

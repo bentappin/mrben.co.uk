@@ -5,17 +5,18 @@ from django.core.exceptions import ImproperlyConfigured
 
 
 def get_env_variable(var_name):
-      """
-      Get the environment variable or return exception.
-      """
-      try:
-          return os.environ[var_name]
-      except KeyError:
-          error_msg = "Set the %s environment variable" % var_name
-          raise ImproperlyConfigured(error_msg)
+    """
+    Get the environment variable or return exception.
+    """
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        error_msg = u"Set the %s environment variable".format(var_name)
+        raise ImproperlyConfigured(error_msg)
 
 
-PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.join(
+    os.path.dirname(__file__).decode('utf-8'), '..'))
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -43,14 +44,11 @@ SITE_ID = 1
 # to load the internationalization machinery.
 USE_I18N = False
 
-# Absolute path to the directory that holds media.
-# Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'static')
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
+MEDIA_URL = '/media/'
 
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash if there is a path component (optional in other cases).
-# Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/static/'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+STATIC_URL = '/static/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -90,9 +88,13 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.humanize',
     'django.contrib.admin',
-    'main',
+    
+    # Thirdparty apps.
     'disqus',
     'south',
+
+    # Project apps.
+    'mrben.main',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -118,7 +120,7 @@ FLICKR_CACHE_TIMEOUT = 1800
 DISQUS_API_KEY = ''
 DISQUS_WEBSITE_SHORTNAME = ''
 
-ENTRIES_PER_PAGE = 4
+ENTRIES_PER_PAGE = 10
 FEATURE_SIDEBAR_COUNT = 2
 FEED_CACHE_TIMEOUT = 1800
 

@@ -55,7 +55,6 @@ body {
 }
 
 h1 {
-	text-transform: lowercase;
 	font-family: 'Terminal Dosis Light', serif;
 	font-size: 64px;
 	line-height: 64px;
@@ -237,7 +236,7 @@ hr {
 }
 
 p.date {
-	font-size: 11px;
+	font-size: 13px;
 	margin-top: 0;
 }
 

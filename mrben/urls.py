@@ -1,8 +1,8 @@
 from django.conf import settings
 from django.contrib import admin
-from django.conf.urls.defaults import patterns, include
+from django.conf.urls import patterns, include
 from django.http import HttpResponseRedirect
-from django.views.generic.simple import redirect_to
+from django.views.generic import RedirectView
 
 from mrben.main.feeds import EntriesFeed, CategoriesFeed
 from mrben.main.views import (
@@ -26,7 +26,7 @@ urlpatterns = patterns('',
 
     # Syndication feeds.
     (r'^feed/$', EntriesFeed()),
-    (r'^blog/feed/$', redirect_to, {'url': '/feed/', 'permanent': True}),
+    (r'^blog/feed/$', RedirectView.as_view(url='/feed/', permanent=True)),
     (r'^feed/(?P<category_slug>[-\w]+)/$', CategoriesFeed()),
 
     (r'^favicon\.ico$', lambda r: HttpResponseRedirect('/static/images/favicon.ico')),
@@ -37,11 +37,5 @@ if settings.DEBUG == True:
     urlpatterns += patterns('',
         (r'^static/(?P<path>.*)$', 'django.views.static.serve', {
             'document_root': settings.MEDIA_ROOT
-        }),
-        (r'^404/$', 'django.views.generic.simple.direct_to_template', {
-            'template': '404.html'
-        }),
-        (r'^500/$', 'django.views.generic.simple.direct_to_template', {
-            'template': '500.html'
         }),
     )
