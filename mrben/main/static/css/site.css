@@ -152,6 +152,14 @@ body {
 	border-top: 6px solid #d33682;
 }
 
+em {
+	font-style: italic;
+}
+
+strong {
+	font-weight: bold;
+}
+
 #footer {
 	background-color: #073642;
 	color: #859900;
