@@ -8,7 +8,9 @@ class EntryAdminForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(EntryAdminForm, self).__init__(*args, **kwargs)
 
-    body = forms.CharField(required=False, widget=forms.Textarea(attrs={'class': 'tinymce vLargeTextField'}))
+    body = forms.CharField(
+        required=False,
+        widget=forms.Textarea(attrs={'class': 'tinymce vLargeTextField'}))
 
     class Meta:
         model = Entry

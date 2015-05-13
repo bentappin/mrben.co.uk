@@ -68,12 +68,12 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.middleware.cache.UpdateCacheMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = 'mrben.urls'
@@ -92,12 +92,16 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.flatpages',
     'django.contrib.humanize',
-    'django.contrib.admin',
     'django.contrib.staticfiles',
+    'django.contrib.messages',
+    'djangocms_admin_style',  # Must be before admin.
+    'django.contrib.admin',
 
     # Thirdparty apps.
     'disqus',
     'south',
+    'raven.contrib.django.raven_compat',
+
 
     # Project apps.
     'mrben.main',

@@ -17,3 +17,7 @@ DATABASES = {
 }
 
 SECRET_KEY = get_env_variable('SECRET_KEY')
+
+RAVEN_CONFIG = {
+    'dsn': get_env_variable('RAVEN_DSN'),
+}

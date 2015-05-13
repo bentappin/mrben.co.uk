@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib import admin
 from django.conf.urls import patterns, include
+from django.conf.urls.static import static
 from django.http import HttpResponseRedirect
 from django.views.generic import RedirectView
 
@@ -30,12 +31,4 @@ urlpatterns = patterns('',
     (r'^feed/(?P<category_slug>[-\w]+)/$', CategoriesFeed()),
 
     (r'^favicon\.ico$', lambda r: HttpResponseRedirect('/static/images/favicon.ico')),
-)
-
-
-if settings.DEBUG == True:
-    urlpatterns += patterns('',
-        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.MEDIA_ROOT
-        }),
-    )
+) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
