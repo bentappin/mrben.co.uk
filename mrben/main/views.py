@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.http import Http404
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
@@ -21,8 +22,11 @@ def entry_detail(request, object_id=None, slug=None):
             entry = Entry.objects.get(id=object_id)
         else:
             entry = Entry.objects.get(slug=slug)
+
+        if entry.status != Entry.LIVE_STATUS and not request.user.is_staff:
+            raise Http404
     except Entry.DoesNotExist:
-        entry = None
+        raise Http404
 
     return render_to_response('entry_detail.html', {
         'entry': entry,
