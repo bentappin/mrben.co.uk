@@ -11,8 +11,11 @@
 		{% else %}
 			{{ entry.body|safe }}
 		{% endif %}
+
+		<hr>
+		<p><em><small>If you enjoyed this post you may want to <a href="https://twitter.com/mrben_">follow me on Twitter</a>. I am also <a href="https://codekitchen.io/">available for hire</a>.</small></em></p>
 		
-		<p class="inline_categories"><em>Categories: {% for category in entry.categories.all %}<a href="/category/{{ category.slug }}">{{ category.title }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</em></p>
+		<p class="inline_categories"><em><small>Categories: {% for category in entry.categories.all %}<a href="/category/{{ category.slug }}">{{ category.title }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</small></em></p>
 
 		<p class="comment_count"><a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a></p>
 		{% disqus_num_replies %}

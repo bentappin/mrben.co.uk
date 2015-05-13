@@ -77,6 +77,18 @@ h3 {
 	font-size: 18px;
 }
 
+em {
+	font-style: italic;
+}
+
+strong {
+	font-weight: bold;
+}
+
+small {
+	font-size: 0.75em;
+}
+
 p, ul, ol {
 	font-size: 14px;
 	margin: 20px 0;
@@ -150,14 +162,6 @@ body {
 	background-color: #002b36;
 	color: #FDF6E3;
 	border-top: 6px solid #d33682;
-}
-
-em {
-	font-style: italic;
-}
-
-strong {
-	font-weight: bold;
 }
 
 #footer {
