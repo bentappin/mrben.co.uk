@@ -188,7 +188,7 @@ p.date {
 
 hr {
 	border: 0;
-	border-bottom: 1px solid #073642;
+	border-bottom: 2px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Layout */

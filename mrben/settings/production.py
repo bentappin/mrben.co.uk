@@ -18,6 +18,9 @@ DATABASES = {
 
 SECRET_KEY = get_env_variable('SECRET_KEY')
 
+DISQUS_API_KEY = 'j23PhNMoYJZwwsyhsriQypzOQJEJd1Q4O6BFv0ng0WnHTm6QjcswooZeDeVcIgbG'
+DISQUS_WEBSITE_SHORTNAME = 'mrben'
+
 RAVEN_CONFIG = {
     'dsn': get_env_variable('RAVEN_DSN'),
 }
