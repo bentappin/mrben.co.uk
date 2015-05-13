@@ -51,11 +51,6 @@ class Entry(models.Model):
         ordering = ['-publish']
         verbose_name_plural = 'entries'
 
-    class Admin:
-        list_display = ('title', 'publish', 'status')
-        list_filter = ('publish', 'categories', 'status')
-        search_fields = ('title', 'body')
-
     def __unicode__(self):
         return u'%s' % self.title
 

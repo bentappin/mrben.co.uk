@@ -18,7 +18,12 @@ class EntryAdminForm(forms.ModelForm):
 
 class EntryAdmin(admin.ModelAdmin):
     form = EntryAdminForm
-    fields = ('title', 'slug', 'author', 'body', 'publish', 'status', 'categories',)
+    list_display = ('title', 'slug', 'status', 'publish',)
+    list_filter = ('status', 'publish', 'categories',)
+    search_fields = ('title', 'body')
+    fields = (
+        'title', 'slug', 'author', 'body', 'publish', 'status', 'categories',
+    )
 
     class Media:
         js = (
@@ -28,6 +33,10 @@ class EntryAdmin(admin.ModelAdmin):
         )
 
 
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('title', 'slug',)
+
+
 admin.site.register(Entry, EntryAdmin)
-admin.site.register(Category)
+admin.site.register(Category, CategoryAdmin)
 admin.site.register(Link)
