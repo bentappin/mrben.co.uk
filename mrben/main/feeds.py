@@ -1,7 +1,6 @@
 from django.conf import settings
 from django.core.cache import cache
 from django.shortcuts import get_object_or_404
-from django.utils.feedgenerator import Atom1Feed
 from django.contrib.syndication.views import Feed
 
 from mrben.main.models import Entry, Category
@@ -10,8 +9,7 @@ from mrben.main.models import Entry, Category
 class EntriesFeed(Feed):
     title = u"mrben.co.uk | web developer and tinkerer"
     link = "/feed/"
-    description = u"The personal blog of Ben Tappin - web developer and tinkerer."
-    feed_type = Atom1Feed
+    description = u"The blog of Ben Tappin - web developer and tinkerer."
 
     def items(self):
         entries = cache.get('entries')
